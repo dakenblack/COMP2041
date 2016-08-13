@@ -15,6 +15,6 @@ for f in $( ls | sort ) ; do
   fi
 done
 
-echo "Small files: $small"
-echo "Medium-sized files: $med"
-echo "Large files: $large"
+echo "Small files:$small"
+echo "Medium-sized files:$med"
+echo "Large files:$large"
