@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ $# -ne 2 ]; then
   echo "Usage: ./echon.sh <number of lines> <string>"
   exit
