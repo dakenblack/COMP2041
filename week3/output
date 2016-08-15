@@ -1,0 +1,380 @@
+Test challenge1 (courses.sh JAPN) - failed (Incorrect output)
+
+Your program produced this output:
+
+JAPN5000 Special Project
+
+The correct output for this test was:
+JAPN0506 Special Program
+JAPN5000 Special Project
+JAPN5011 Japanese Teaching Practicum
+
+The difference between your output and the correct output is:
+- 
++ JAPN0506 Special Program
+  JAPN5000 Special Project
++ JAPN5011 Japanese Teaching Practicum
+You can reproduce this test by executing these commands:
+
+courses.sh JAPN
+
+
+Test challenge2 (courses.sh MATH) - failed (Incorrect output)
+
+Your program produced this output:
+MATH1011 Fundamentals of Mathematics B 
+MATH1041 Statistics for Life and Social Sciences
+MATH1141 Higher Mathematics 1A
+MATH1231 Mathematics 1B
+MATH1251 Mathematics for Actuarial Studies and Finance 1B
+MATH2018 Engineering Mathematics 2D 
+MATH2069 Mathematics 2A
+MATH2099 Mathematics 2B
+MATH2120 Mathematical Methods for Differential Equations
+MATH2130 Higher Mathematical Methods for Differential Equations
+MATH2241 Introduction to Atmosphere and Ocean Dynamics
+MATH2400 Finite Mathematics
+MATH2520 Complex Analysis
+MATH2601 Higher Linear Algebra
+MATH2621 Higher Complex Analysis
+MATH2801 Theory of Statistics
+MATH2881 Quantitative Risk 
+MATH2931 Higher Linear Models
+MATH3041 Mathematical Modelling for Real World Systems
+MATH3121 Mathematical Methods and Partial Differential Equations
+MATH3201 Dynamical Systems and Chaos
+MATH3311 Mathematical Computing for Finance
+MATH3531 Topology and Differential Geometry
+MATH3570 Foundations of Calculus
+MATH3701 Higher Topology and Differential Geometry
+MATH3801 Probability and Stochastic Processes
+MATH3821 Statistical Modelling and Computing
+MATH3841 Statistical Analysis of Dependent Data
+MATH3871 Bayesian Inference and Computation 
+MATH3911 Higher Statistical Inference
+MATH4002 MathsStats Hons Thesis B 
+MATH6781 Biomathematics
+...
+
+
+The correct output for this test was:
+MATH1011 Fundamentals of Mathematics B
+MATH1031 Mathematics for Life Sciences
+MATH1041 Statistics for Life and Social Sciences
+MATH1081 Discrete Mathematics
+MATH1099 Industrial Placement 1 (Co-Op)
+MATH1131 Mathematics 1A
+MATH1141 Higher Mathematics 1A
+MATH1151 Mathematics for Actuarial Studies and Finance 1A
+MATH1231 Mathematics 1B
+MATH1241 Higher Mathematics 1B
+MATH1251 Mathematics for Actuarial Studies and Finance 1B
+MATH2011 Several Variable Calculus
+MATH2018 Engineering Mathematics 2D
+MATH2019 Engineering Mathematics 2E
+MATH2069 Mathematics 2A
+MATH2089 Numerical Methods and Statistics
+MATH2099 Mathematics 2B
+MATH2111 Higher Several Variable Calculus
+MATH2120 Mathematical Methods for Differential Equations
+MATH2121 Theory and Applications of Differential Equations
+MATH2130 Higher Mathematical Methods for Differential Equations
+MATH2221 Higher Theory and Applications of Diff. Equations
+MATH2241 Introduction to Atmosphere and Ocean Dynamics
+MATH2301 Mathematical Computing
+MATH2400 Finite Mathematics
+MATH2501 Linear Algebra
+MATH2520 Complex Analysis
+MATH2521 Complex Analysis
+MATH2601 Higher Linear Algebra
+MATH2620 Higher Complex Analysis
+MATH2621 Higher Complex Analysis
+MATH2701 Abstract Algebra and Fundamental Analysis
+...
+
+
+The difference between your output and the correct output is:
+- MATH1011 Fundamentals of Mathematics B 
+?                                       -
+
++ MATH1011 Fundamentals of Mathematics B
++ MATH1031 Mathematics for Life Sciences
+  MATH1041 Statistics for Life and Social Sciences
++ MATH1081 Discrete Mathematics
++ MATH1099 Industrial Placement 1 (Co-Op)
++ MATH1131 Mathematics 1A
+  MATH1141 Higher Mathematics 1A
++ MATH1151 Mathematics for Actuarial Studies and Finance 1A
+  MATH1231 Mathematics 1B
++ MATH1241 Higher Mathematics 1B
+  MATH1251 Mathematics for Actuarial Studies and Finance 1B
++ MATH2011 Several Variable Calculus
+- MATH2018 Engineering Mathematics 2D 
+?                                    -
+
+...
+You can reproduce this test by executing these commands:
+
+courses.sh MATH
+
+
+Test challenge3 (courses.sh COMP) - failed (Incorrect output)
+
+Your program produced this output:
+COMP1911 Computing 1A 
+COMP1921 Computing 1B 
+COMP2121 Microprocessors and Interfacing 
+COMP3121 Algorithms and Programming Techniques
+COMP3141 Software System Design and Implementation
+COMP3153 Algorithmic Verification 
+COMP3211 Computer Architecture
+COMP3231 Operating Systems
+COMP3331 Computer Networks and Applications
+COMP3421 Computer Graphics
+COMP3441 Security Engineering 
+COMP3601 Design Project A 
+COMP3891 Extended Operating Systems 
+COMP3902 Special Project B
+COMP4121 Advanced and Parallel Algorithms 
+COMP4141 Theory of Computation 
+COMP4337 Securing Wireless Networks 
+COMP4418 Knowledge Representation and Reasoning 
+COMP4432 Game Design Studio 
+COMP4904 Industrial Training 1 
+COMP4906 Industrial Training 3 
+COMP4911 Thesis Part B
+COMP4930 Thesis Part A 
+COMP4941 Thesis Part B 
+COMP6733 Internet of Things Experimental Design Studio 
+COMP6752 Modelling Concurrent Systems 
+COMP9018 Advanced Graphics 
+COMP9243 Distributed Systems
+COMP9318 Data Warehousing and Data Mining
+COMP9321 Web Applications Engineering 
+COMP9333 Advanced Computer Networks
+COMP9417 Machine Learning and Data Mining
+...
+
+
+The correct output for this test was:
+COMP1000 Introduction to World Wide Web, Spreadsheets and Databases
+COMP1400 Programming for Designers
+COMP1911 Computing 1A
+COMP1917 Computing 1
+COMP1921 Computing 1B
+COMP1927 Computing 2
+COMP2041 Software Construction: Techniques and Tools
+COMP2111 System Modelling and Design
+COMP2121 Microprocessors and Interfacing
+COMP2911 Engineering Design in Computing
+COMP3121 Algorithms and Programming Techniques
+COMP3131 Programming Languages and Compilers
+COMP3141 Software System Design and Implementation
+COMP3151 Foundations of Concurrency
+COMP3153 Algorithmic Verification
+COMP3161 Concepts of Programming Languages
+COMP3211 Computer Architecture
+COMP3222 Digital Circuits and Systems
+COMP3231 Operating Systems
+COMP3311 Database Systems
+COMP3331 Computer Networks and Applications
+COMP3411 Artificial Intelligence
+COMP3421 Computer Graphics
+COMP3431 Robotic Software Architecture
+COMP3441 Security Engineering
+COMP3511 Human Computer Interaction
+COMP3601 Design Project A
+COMP3821 Extended Algorithms & Programming Techniques
+COMP3891 Extended Operating Systems
+COMP3901 Special Project A
+COMP3902 Special Project B
+COMP4001 Object-Oriented Software Development
+...
+
+
+The difference between your output and the correct output is:
++ COMP1000 Introduction to World Wide Web, Spreadsheets and Databases
++ COMP1400 Programming for Designers
+- COMP1911 Computing 1A 
+?                      -
+
++ COMP1911 Computing 1A
++ COMP1917 Computing 1
+- COMP1921 Computing 1B 
+?                      -
+
++ COMP1921 Computing 1B
++ COMP1927 Computing 2
++ COMP2041 Software Construction: Techniques and Tools
++ COMP2111 System Modelling and Design
+- COMP2121 Microprocessors and Interfacing 
+?                                         -
+
++ COMP2121 Microprocessors and Interfacing
++ COMP2911 Engineering Design in Computing
+...
+You can reproduce this test by executing these commands:
+
+courses.sh COMP
+
+
+Test challenge4 (courses.sh PHYS) - failed (Incorrect output)
+
+Your program produced this output:
+PHYS1110 Everyday Physics 
+PHYS1121 Physics 1A
+PHYS1160 Introduction to Astronomy 
+PHYS1221 Physics 1B
+PHYS2020 Computational Physics
+PHYS2040 Quantum Physics
+PHYS2060 Thermal Physics
+PHYS2113 Classical Mechanics and Special Relativity 
+PHYS2410 Biophysics 1
+PHYS2801 Atmospheric Science
+PHYS3020 Statistical Physics
+PHYS3031 Advanced Optics and Nuclear Physics
+PHYS3050 Nuclear Physics
+PHYS3070 Experimental Physics A2
+PHYS3110 Experimental Physics B1
+PHYS3112 Experimental and Computational Physics 
+PHYS3114 Electrodynamics 
+PHYS3116 Astrophysics 
+PHYS3118 Solid State Physics and Devices 
+PHYS3170 Cosmology and Instellar Medium
+PHYS3230 Electromagnetism
+PHYS3610 Computational Physics
+PHYS3720 Optoelectronics
+PHYS3780 Photonics Laboratory
+PHYS4012 Physics Research Project 1B 
+PHYS4014 Physics Honours Coursework B 
+PHYS4022 Physics Research Project 2B 
+PHYS4949 Advanced Topics in Physics
+PHYS9483 Advanced Theoretical Physics 1 
+PHYS9683 Advanced Astrophysics 
+PHYS9883 Advanced Solid State Physics 2 
+
+The correct output for this test was:
+PHYS1110 Everyday Physics
+PHYS1111 Fundamentals of Physics
+PHYS1121 Physics 1A
+PHYS1131 Higher Physics 1A
+PHYS1141 Higher Physics 1A (Special)
+PHYS1149 Physics 1A (Aviation)
+PHYS1160 Introduction to Astronomy
+PHYS1211 Energy and Environmental Physics
+PHYS1221 Physics 1B
+PHYS1231 Higher Physics 1B
+PHYS1241 Higher Physics 1B (Special)
+PHYS2010 Mechanics
+PHYS2020 Computational Physics
+PHYS2030 Laboratory A
+PHYS2040 Quantum Physics
+PHYS2050 Electromagnetism
+PHYS2060 Thermal Physics
+PHYS2111 Quantum Physics
+PHYS2113 Classical Mechanics and Special Relativity
+PHYS2114 Electromagnetism
+PHYS2410 Biophysics 1
+PHYS2630 Electronics
+PHYS2801 Atmospheric Science
+PHYS3011 Quantum Mechanics and Electrodynamics
+PHYS3020 Statistical Physics
+PHYS3021 Statistical and Solid State Physics
+PHYS3031 Advanced Optics and Nuclear Physics
+PHYS3040 Experimental Physics A1
+PHYS3050 Nuclear Physics
+PHYS3060 Advanced Optics
+PHYS3070 Experimental Physics A2
+PHYS3080 Solid State Physics
+...
+
+
+The difference between your output and the correct output is:
+- PHYS1110 Everyday Physics 
+?                          -
+
++ PHYS1110 Everyday Physics
++ PHYS1111 Fundamentals of Physics
+  PHYS1121 Physics 1A
++ PHYS1131 Higher Physics 1A
++ PHYS1141 Higher Physics 1A (Special)
++ PHYS1149 Physics 1A (Aviation)
+- PHYS1160 Introduction to Astronomy 
+?                                   -
+
++ PHYS1160 Introduction to Astronomy
++ PHYS1211 Energy and Environmental Physics
+  PHYS1221 Physics 1B
++ PHYS1231 Higher Physics 1B
++ PHYS1241 Higher Physics 1B (Special)
++ PHYS2010 Mechanics
+...
+You can reproduce this test by executing these commands:
+
+courses.sh PHYS
+
+
+Test challenge5 (courses.sh MECH) - failed (Incorrect output)
+
+Your program produced this output:
+MECH3610 Advanced Thermofluids 
+MECH4305 Fundamental and Advanced Vibration Analysis
+MECH4620 Computational Fluid Dynamics 
+MECH4900 Mechanics of Fracture and Fatigue 
+MECH9650 Introduction to Micro Electromechanical Systems 
+MECH9751 Refrigeration and Air Conditioning 1
+MECH4305 Fundamental and Advanced Vibration Analysis
+MECH4620 Computational Fluid Dynamics 
+MECH4900 Mechanics of Fracture and Fatigue 
+MECH9012 ME Project B 
+MECH9650 Introduction to Micro Electromechanical Systems 
+MECH9751 Refrigeration and Air Conditioning 1 
+
+The correct output for this test was:
+MECH3091 Co-Operative Training A
+MECH3092 Co-Operative Training B
+MECH3110 Mechanical Design 1
+MECH3610 Advanced Thermofluids
+MECH4100 Mechanical Design 2
+MECH4305 Fundamental and Advanced Vibration Analysis
+MECH4320 Engineering Mechanics 3
+MECH4620 Computational Fluid Dynamics
+MECH4880 Refrigeration and Air Conditioning 1
+MECH4900 Mechanics of Fracture and Fatigue
+MECH9011 ME Project A
+MECH9012 ME Project B
+MECH9223 Machine Condition Monitoring
+MECH9325 Fundamentals of Acoustics & Noise
+MECH9420 Composite Materials and Mechanics
+MECH9650 Introduction to Micro Electromechanical Systems
+MECH9720 Solar Thermal Energy Design
+MECH9751 Refrigeration and Air Conditioning 1
+MECH9761 Automobile Engine Technology
+
+The difference between your output and the correct output is:
++ MECH3091 Co-Operative Training A
++ MECH3092 Co-Operative Training B
++ MECH3110 Mechanical Design 1
+- MECH3610 Advanced Thermofluids 
+?                               -
+
++ MECH3610 Advanced Thermofluids
++ MECH4100 Mechanical Design 2
+  MECH4305 Fundamental and Advanced Vibration Analysis
++ MECH4320 Engineering Mechanics 3
+- MECH4620 Computational Fluid Dynamics 
+?                                      -
+
++ MECH4620 Computational Fluid Dynamics
++ MECH4880 Refrigeration and Air Conditioning 1
+- MECH4900 Mechanics of Fracture and Fatigue 
+?                                           -
+
++ MECH4900 Mechanics of Fracture and Fatigue
+...
+You can reproduce this test by executing these commands:
+
+courses.sh MECH
+
+
+0 tests passed  5 tests failed
