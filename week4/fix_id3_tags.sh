@@ -13,8 +13,9 @@ for dir in "$@" ; do
     track=`echo "$raw_f" | cut -d'-' -f1 | sed -e 's/\ *$//' | sed -e 's/^\ *//'`
     name=`echo "$raw_f" | cut -d'-' -f2 | sed -e 's/\ *$//' | sed -e 's/^\ *//'`
     artist=`echo "$raw_f" | cut -d'-' -f3 | sed -e 's/\ *$//' | sed -e 's/^\ *//' | sed -e 's/\.mp3//'`
-    #echo -e "album:$album\tyear:$year\ttrack:$track\tartist:$artist\tname:$name"
-    id3 -t "$name" -T "$track" -a "$artist" -A "$album" -y "$year" "$f"
+
+    echo -e "album:$album\tyear:$year\ttrack:$track\tartist:$artist\tname:$name"
+    id3 -t "$name" -T "$track" -a "$artist" -A "$album" -y "$year" "$f" > /dev/null
   done
 
 done
