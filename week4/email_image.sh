@@ -1,7 +1,7 @@
 #!/bin/sh
-#
 #assuming all arguments are images
-#
+
+
 for f in $@ ; do
   if [ -f "$f" ] ; then
     display "$f"
