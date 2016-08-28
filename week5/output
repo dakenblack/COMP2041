@@ -2,14 +2,14 @@ Test tail_1 (-a	"./tail.pl t1.txt") - passed
 Test tail_2 (-a	"./tail.pl t2.txt") - failed (errors)
 
 Your program produced these errors:
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
 You can reproduce this test by executing these commands:
 
 ./tail.pl t2.txt
@@ -24,50 +24,26 @@ Test tail_8 (-a	"./tail.pl -11 t1.txt") - passed
 Test tail_9 (-a	"./tail.pl -1 t1.txt t2.txt t3.txt") - failed (errors)
 
 Your program produced these errors:
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
 You can reproduce this test by executing these commands:
 
 ./tail.pl t1.txt t2.txt t3.txt
 
 
-Test tail_10 (-a	"./tail.pl -1 t1.txt t2.txt t3.txt") - failed (Incorrect output)
-
-Your program produced these 3 lines of output:
-Data 1 ... Last line
-A one line file.
-line
-
-The correct 6 lines of output for this test were:
-==> t1.txt <==
-Data 1 ... Last line
-==> t2.txt <==
-A one line file.
-==> t3.txt <==
-line
-
-The difference between your output and the correct output is:
-+ ==> t1.txt <==
-+ ==> t2.txt <==
-+ ==> t3.txt <==
-
-You can reproduce this test by executing these commands:
-
-./tail.pl -1 t1.txt t2.txt t3.txt
-
-
+Test tail_10 (-a	"./tail.pl -1 t1.txt t2.txt t3.txt") - passed
 Test tail_11 (-a	"./tail.pl -5 t1.txt t2.txt t3.txt") - failed (errors)
 
 Your program produced these errors:
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
 You can reproduce this test by executing these commands:
 
 ./tail.pl -5 t1.txt t2.txt t3.txt
@@ -76,19 +52,19 @@ You can reproduce this test by executing these commands:
 Test tail_12 (-a	"./tail.pl -11 t1.txt t2.txt t3.txt") - failed (errors)
 
 Your program produced these errors:
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
-Use of uninitialized value in print at ./tail.pl line 29, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
+Use of uninitialized value in print at ./tail.pl line 32, <F> line 1.
 You can reproduce this test by executing these commands:
 
 ./tail.pl -11 t1.txt t2.txt t3.txt
 
 
 Test tail_13 (-a	"./tail.pl <t1.txt") - passed
-8 tests passed  5 tests failed
+9 tests passed  4 tests failed
