@@ -1,0 +1,530 @@
+Test tail_1 (-a	"./tail.pl t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 10 lines of output for this test were:
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+
+You can reproduce this test by executing these commands:
+
+./tail.pl t1.txt
+
+
+Test tail_2 (-a	"./tail.pl t2.txt") - passed
+Test tail_3 (-a	"./tail.pl t3.txt") - failed (Incorrect output)
+
+Your program produced these 12 lines of output:
+This
+file
+has 
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The correct 10 lines of output for this test were:
+has
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The difference between your output and the correct output is:
+- This
+- file
+
+You can reproduce this test by executing these commands:
+
+./tail.pl t3.txt
+
+
+Test tail_4 (-a	"./tail.pl -1 t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 1 lines of output for this test were:
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+- Data 1 ... Line 3
+- Data 1 ... Line 4
+- Data 1 ... Line 5
+- Data 1 ... Line 6
+- Data 1 ... Line 7
+- Data 1 ... Line 8
+- Data 1 ... Line 9
+- Data 1 ... Line 10
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -1 t1.txt
+
+
+Test tail_5 (-a	"./tail.pl -2 t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 2 lines of output for this test were:
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+- Data 1 ... Line 3
+- Data 1 ... Line 4
+- Data 1 ... Line 5
+- Data 1 ... Line 6
+- Data 1 ... Line 7
+- Data 1 ... Line 8
+- Data 1 ... Line 9
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -2 t1.txt
+
+
+Test tail_6 (-a	"./tail.pl -5 t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 5 lines of output for this test were:
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+- Data 1 ... Line 3
+- Data 1 ... Line 4
+- Data 1 ... Line 5
+- Data 1 ... Line 6
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -5 t1.txt
+
+
+Test tail_7 (-a	"./tail.pl -9 t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 9 lines of output for this test were:
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -9 t1.txt
+
+
+Test tail_8 (-a	"./tail.pl -11 t1.txt") - passed
+Test tail_9 (-a	"./tail.pl -1 t1.txt t2.txt t3.txt") - failed (Incorrect output)
+
+Your program produced these 27 lines of output:
+==> t1.txt <==
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+This
+file
+has 
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The correct 24 lines of output for this test were:
+==> t1.txt <==
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+has
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- This
+- file
+
+You can reproduce this test by executing these commands:
+
+./tail.pl t1.txt t2.txt t3.txt
+
+
+Test tail_10 (-a	"./tail.pl -1 t1.txt t2.txt t3.txt") - failed (Incorrect output)
+
+Your program produced these 27 lines of output:
+==> t1.txt <==
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+This
+file
+has 
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The correct 6 lines of output for this test were:
+==> t1.txt <==
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+- Data 1 ... Line 3
+- Data 1 ... Line 4
+- Data 1 ... Line 5
+- Data 1 ... Line 6
+- Data 1 ... Line 7
+- Data 1 ... Line 8
+- Data 1 ... Line 9
+- Data 1 ... Line 10
+- This
+- file
+- has 
+- exactly
+- twelve
+- lines
+- with
+- one
+- word
+- on
+- each
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -1 t1.txt t2.txt t3.txt
+
+
+Test tail_11 (-a	"./tail.pl -5 t1.txt t2.txt t3.txt") - failed (Incorrect output)
+
+Your program produced these 27 lines of output:
+==> t1.txt <==
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+This
+file
+has 
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The correct 14 lines of output for this test were:
+==> t1.txt <==
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+one
+word
+on
+each
+line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+- Data 1 ... Line 2
+- Data 1 ... Line 3
+- Data 1 ... Line 4
+- Data 1 ... Line 5
+- Data 1 ... Line 6
+- This
+- file
+- has 
+- exactly
+- twelve
+- lines
+- with
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -5 t1.txt t2.txt t3.txt
+
+
+Test tail_12 (-a	"./tail.pl -11 t1.txt t2.txt t3.txt") - failed (Incorrect output)
+
+Your program produced these 27 lines of output:
+==> t1.txt <==
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+This
+file
+has 
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The correct 26 lines of output for this test were:
+==> t1.txt <==
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+==> t2.txt <==
+A one line file.
+==> t3.txt <==
+file
+has
+exactly
+twelve
+lines
+with
+one
+word
+on
+each
+line
+
+The difference between your output and the correct output is:
+- This
+
+You can reproduce this test by executing these commands:
+
+./tail.pl -11 t1.txt t2.txt t3.txt
+
+
+Test tail_13 (-a	"./tail.pl <t1.txt") - failed (Incorrect output)
+
+Your program produced these 11 lines of output:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The correct 10 lines of output for this test were:
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+
+The difference between your output and the correct output is:
+- This file has 11 lines
+
+The input for this test was:
+This file has 11 lines
+Data 1 ... Line 2
+Data 1 ... Line 3
+Data 1 ... Line 4
+Data 1 ... Line 5
+Data 1 ... Line 6
+Data 1 ... Line 7
+Data 1 ... Line 8
+Data 1 ... Line 9
+Data 1 ... Line 10
+Data 1 ... Last line
+You can reproduce this test by executing these commands:
+
+./tail.pl </home/cs2041/public_html/16s2/lab/lab05/autotest/testtail_13
+
+
+2 tests passed  11 tests failed
