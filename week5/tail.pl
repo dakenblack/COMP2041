@@ -19,6 +19,9 @@ if( scalar(@files) eq 0) {
 }
 
 foreach $f (@files) {
+    if( scalar(@files) > 1) {
+      print "==> $f <==\n";
+    }
     open(F,"<$f") or die "$0: can't open $f\n";
     @arr = ();
     while(<F>) {
