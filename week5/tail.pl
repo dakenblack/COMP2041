@@ -29,9 +29,7 @@ foreach $f (@files) {
     }
     for (my $count = 0; $count < $N; $count ++) {
       my $len = scalar (@arr);
-      if ($len - $N + $count >= $len ) {
-        last;
-      }
+      print "<" . ( $len ) . ">\n";
       print $arr[ $len - $N + $count ];
     }
     close(F);
