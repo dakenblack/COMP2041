@@ -27,9 +27,9 @@ foreach $f (@files) {
     while(<F>) {
       push @arr, $_ ;
     }
-    for (my $count = 0; $count < $N; $count ++) {
+
       my $len = scalar (@arr);
-      print "<" . ( $len ) . ">\n";
+    for (my $count = 0; $count < $N; $count ++) {
       print $arr[ $len - $N + $count ];
     }
     close(F);
