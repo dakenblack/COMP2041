@@ -1,6 +1,8 @@
 #!/usr/bin/perl
-$N = 10;
-@files = ();
+use warnings;
+
+my $N = 10;
+my @files = ();
 foreach $arg (@ARGV) {
     if ($arg =~ /-[0-9]+/) {
       $arg =~ s/-//;
@@ -18,13 +20,13 @@ if( scalar(@files) eq 0) {
 
 foreach $f (@files) {
     open(F,"<$f") or die "$0: can't open $f\n";
-    $count = 0;
+    @arr = ();
     while(<F>) {
-      if ($count == $N) {
-        last;
-      }
-      print $_;
-      $count ++;
+      push @arr, $_ ;
+    }
+    for ($count = 0; $count < 5; $count ++) {
+      my $len = scalar (@arr);
+      print $arr[ $len - 5 + $count ];
     }
     close(F);
 }
