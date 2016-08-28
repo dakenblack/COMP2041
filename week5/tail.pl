@@ -24,9 +24,9 @@ foreach $f (@files) {
     while(<F>) {
       push @arr, $_ ;
     }
-    for ($count = 0; $count < 5; $count ++) {
+    for ($count = 0; $count < $N; $count ++) {
       my $len = scalar (@arr);
-      print $arr[ $len - 5 + $count ];
+      print $arr[ $len - $N + $count ];
     }
     close(F);
 }
