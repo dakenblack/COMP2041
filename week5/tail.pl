@@ -27,8 +27,11 @@ foreach $f (@files) {
     while(<F>) {
       push @arr, $_ ;
     }
-    for ($count = 0; $count < $N; $count ++) {
+    for (my $count = 0; $count < $N; $count ++) {
       my $len = scalar (@arr);
+      if ($len - $N + $count >= $len ) {
+        last;
+      }
       print $arr[ $len - $N + $count ];
     }
     close(F);
