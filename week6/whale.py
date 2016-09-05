@@ -10,4 +10,4 @@ for line in sys.stdin.read().strip().split('\n') :
         pods += 1
         count += int(arr[0])
 
-print( "%s observations: %d pods, %d individuals\n" % (sys.argv[1], pods, count))
+print( "%s observations: %d pods, %d individuals" % (sys.argv[1], pods, count))
