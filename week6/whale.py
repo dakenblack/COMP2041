@@ -5,7 +5,7 @@ pods = 0
 count = 0
 
 for line in sys.stdin.read().strip().split('\n') :
-    arr = line.strip().split(' ', 2)
+    arr = line.strip().split(' ', 1)
     if(arr[1] == sys.argv[1]) :
         pods += 1
         count += int(arr[0])
