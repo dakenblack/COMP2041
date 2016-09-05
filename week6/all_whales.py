@@ -7,7 +7,7 @@ mapCount = {}
 for line in sys.stdin.read().strip().split('\n') :
     line = line.strip()
     line = re.sub(r'  +',' ',line)
-    arr = line.strip().split(' ', 2)
+    arr = line.strip().split(' ', 1)
 
     arr[1] = arr[1].lower()
     arr[1] = re.sub(r' +$','',arr[1])
