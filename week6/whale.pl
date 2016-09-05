@@ -4,7 +4,7 @@ my $pods = 0;
 my $count = 0;
 my @arr = [];
 while(<STDIN>) {
-  chomp $_;
+  chomp;
   @arr = split(/ /,$_,2);
   if ( $arr[1] eq  $ARGV[0] ) {
     $pods = $pods + 1;
