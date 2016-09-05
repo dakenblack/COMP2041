@@ -25,9 +25,8 @@ Test challenge_tail_3 (./simple_tail.py t3.txt) - passed
 Test challenge_tail_4 (./simple_tail.py t1.txt t2.txt t3.txt) - passed
 Test challenge_whale_1 (./whale.py 'sperm whale') - failed (Incorrect output)
 
-Your program produced these 2 lines of output:
+Your program produced these 1 lines of output:
 sperm whale observations: 0 pods, 0 individuals
-
 
 The correct 1 lines of output for this test were:
 sperm whale observations: 2 pods, 4 individuals
@@ -39,7 +38,6 @@ The difference between your output and the correct output is:
 + spermwhaleobservations:2pods,4individuals
 ?                        ^     ^
 
-- 
 
 The input for this test was:
 15 humpback
@@ -57,30 +55,11 @@ You can reproduce this test by executing these commands:
 ./whale.py 'sperm whale' </home/cs2041/public_html/16s2/lab/lab06/autotest/testchallenge_whale_1
 
 
-Test challenge_whale_2 (./whale.py 'orca') - failed (Incorrect output)
-
-Your program's output was correct except it had an extra newline
-The input for this test was:
-15 humpback
-2 orca
-2 sperm whale
-19 beluga
-2 humpback
-2 sperm whale
-4 orca
-4 pygmy right whale
-7 humpback
-1 orca
-You can reproduce this test by executing these commands:
-
-./whale.py 'orca' </home/cs2041/public_html/16s2/lab/lab06/autotest/testchallenge_whale_2
-
-
+Test challenge_whale_2 (./whale.py 'orca') - passed
 Test challenge_whale_3 (./whale.py "cuvier's beaked whale") - failed (Incorrect output)
 
-Your program produced these 2 lines of output:
+Your program produced these 1 lines of output:
 cuvier\'s beaked whale observations: 0 pods, 0 individuals
-
 
 The correct 1 lines of output for this test were:
 cuvier\'s beaked whale observations: 2 pods, 7 individuals
@@ -92,32 +71,13 @@ The difference between your output and the correct output is:
 + cuvier'sbeakedwhaleobservations:2pods,7individuals
 ?                                 ^     ^
 
-- 
 
 You can reproduce this test by executing these commands:
 
 ./whale.py "cuvier's beaked whale" </home/cs2041/public_html/16s2/lab/lab06/autotest/testchallenge_whale_3
 
 
-Test challenge_whale_4 (./whale.py "cuvier's beaked whale") - failed (Incorrect output)
-
-Your program's output was correct except it had an extra newline
-The input for this test was:
-15 humpback
-2 orca
-2 sperm whale
-19 beluga
-2 humpback
-2 sperm whale
-4 orca
-4 pygmy right whale
-7 humpback
-1 orca
-You can reproduce this test by executing these commands:
-
-./whale.py "cuvier's beaked whale" </home/cs2041/public_html/16s2/lab/lab06/autotest/testchallenge_whale_4
-
-
+Test challenge_whale_4 (./whale.py "cuvier's beaked whale") - passed
 Test challenge_all_whales_1 (./all_whales.py) - failed (Incorrect output)
 
 Your program produced these 5 lines of output:
@@ -270,4 +230,4 @@ You can reproduce this test by executing these commands:
 ./all_whales.py </home/cs2041/public_html/16s2/lab/lab06/autotest/testchallenge_all_whales_3
 
 
-24 tests passed  7 tests failed  4 tests could not be run
+26 tests passed  5 tests failed  4 tests could not be run
