@@ -5,7 +5,7 @@
 2 humpbacks
 2 sperm  whales
 4 Orcas
-4  pygmy right whale
+4  pygmy right whale  
 7 humpbacks
 1 orca
 3 ORCAS

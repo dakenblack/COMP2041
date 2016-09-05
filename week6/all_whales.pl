@@ -6,7 +6,9 @@ my %mapCount;
 while(<STDIN>) {
   chomp;
   @arr = split(/ +/,$_,2);
+
   $arr[1] = lc $arr[1];
+  $arr[1] =~ s/ +$//;
   $arr[1] =~ s/s$//;
   $arr[1] =~ s/ ( +)/ /g;
 
