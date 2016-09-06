@@ -10,7 +10,7 @@ for my $degree (("postgraduate", "undergraduate")) {
     if ( "$line" =~ /(<p>Prerequisite[^<]*<\/p>)/) {
       my $tmp = $1;
       while ($tmp =~ /([A-Z]{4}[0-9]{4})/g) {
-        push @result, $1
+        push @result, $1 ;
       }
     }
   }
