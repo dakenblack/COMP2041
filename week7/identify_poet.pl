@@ -53,7 +53,7 @@ foreach my $file (glob "poems/*.txt") {
   }
 }
 
-foreach $file (keys %words) {
+foreach $file (sort keys %words) {
   my %prob;
   foreach $artist (keys %log_prob) {
     $prob{"$artist"} = 0;
