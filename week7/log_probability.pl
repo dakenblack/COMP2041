@@ -27,6 +27,6 @@ foreach my $file (glob "poems/*.txt") {
 
   $log_prob{"$artist"} = log (($count + 1 ) / $allCount);
 
-  printf("log((%1d+1)/%6d) = %8.4f %s\n", $count, $allCount, $log_prob{"$artist"}, $artist );
+  printf("log((%d+1)/%6d) = %8.4f %s\n", $count, $allCount, $log_prob{"$artist"}, $artist );
 
 }
