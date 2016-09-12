@@ -6,6 +6,7 @@ use strict;
 my $word = lc $ARGV[0];
 my @arr = <STDIN>;
 @arr = split(/[^a-zA-Z]+/, join(' ',@arr));
+@arr = grep { $_ ne '' } @arr;
 
 my $count = 0;
 foreach my $elem (@arr) {
