@@ -7,17 +7,11 @@ foreach my $file (@ARGV) {
   @arr = split(/[^a-zA-Z]+/, join(' ',@arr));
   @arr = grep { $_ ne '' } @arr;
   foreach my $word (@arr) {
-    $words{"$file"}{"$word"};
+    $words{"$file"}{"$word"} = '';
   }
 }
 
-foreach my $file (keys %words) {
-  print "$file\n";
-  foreach my $word (keys %{ $words{"$file"} }) {
-    print "$file $word\n";
-  }
-}
-my %wordCount;
+my %log_prob;
 foreach my $file (glob "poems/*.txt") {
   my $artist = $file;
   $artist =~ s/poems\/([^\.]*).txt/\1/;
@@ -27,4 +21,47 @@ foreach my $file (glob "poems/*.txt") {
   my @arr = <F>;
   @arr = split(/[^a-zA-Z]+/, join(' ',@arr));
   @arr = grep { $_ ne '' } @arr;
+  my $allCount = scalar @arr;
+
+  foreach my $file (keys %words) {
+    foreach my $word (keys %{ $words{"$file"} }) {
+
+      if( exists $log_prob{"$artist"}{"$word"} ) {
+        next;
+      }
+      my $count = 0;
+      foreach my $elem (@arr) {
+        chomp $elem;
+        $elem = lc $elem;
+        if ( $elem eq $word ) {
+          $count ++;
+        }
+      }
+      $log_prob{"$artist"}{"$word"} = log (($count + 1 ) / $allCount);
+    }
+  }
+}
+
+foreach $file (keys %words) {
+  my %prob;
+  foreach $artist (keys %log_prob) {
+    $prob{"$artist"} = 0;
+    foreach $word (keys %{ $words{"$file"} }) {
+      $prob{"$artist"} += $log_prob{"$artist"}{"$word"};
+    }
+  }
+  print "@{[%prob]}";
+
+  # my $chosen = '';
+  # foreach my $artist (keys %prob) {
+  #   if($chosen eq '') {
+  #     $chosen = $artist;
+  #     next;
+  #   }
+  #   if($prob{"$artist"} > $prob{"$chosen"}) {
+  #     $chosen = $artist;
+  #   }
+  # }
+
+  # print "$chosen\n";
 }
