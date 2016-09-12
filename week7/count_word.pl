@@ -17,4 +17,4 @@ foreach my $elem (@arr) {
   }
 }
 
-print "$word[0] occurred $count times\n";
+print "$word occurred $count times\n";
