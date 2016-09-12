@@ -34,8 +34,8 @@ foreach my $file (glob "poems/*.txt") {
   @arr = grep { $_ ne '' } @arr;
   my $allCount = scalar @arr;
 
-  foreach my $file (keys %words) {
-    foreach my $word (keys %{ $words{"$file"} }) {
+  foreach my $fil (keys %words) {
+    foreach my $word (keys %{ $words{"$fil"} }) {
 
       if( exists $log_prob{"$artist"}{"$word"} ) {
         next;
