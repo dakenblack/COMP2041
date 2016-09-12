@@ -41,10 +41,10 @@ for fil in sorted(words.keys()) :
     for artist, d in log_prob.items():
         prob[artist] = 0
         for word in d :
-            prob[artist] += ( log_prob[artist][word])
+            prob[artist] += ( log_prob[artist][word] * words[fil].get(word,0) )
 
     chosen = ''
-    sortedKeys = sorted(prob, key=prob.get)
+    sortedKeys = sorted(prob, key=prob.get, reverse=True)
     if(debug) :
         for artist in sortedKeys :
             print ("%s: log_probability of %.1f for %s"% (fil,prob[artist],artist))
