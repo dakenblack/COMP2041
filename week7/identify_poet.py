@@ -41,7 +41,7 @@ for fil in sorted(words.keys()) :
     for artist, d in log_prob.items():
         prob[artist] = 0
         for word in d :
-            prob[artist] += ( log_prob[artist][word] * d[word])
+            prob[artist] += ( log_prob[artist][word])
 
     chosen = ''
     sortedKeys = sorted(prob, key=prob.get)
