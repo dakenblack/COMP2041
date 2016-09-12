@@ -15,7 +15,7 @@ for fil in files :
     words[fil] = {}
     for word in arr :
         word = word.strip().lower()
-        words[fil][word] = words[fil].get(word,1) + 1
+        words[fil][word] = words[fil].get(word,0) + 1
 
 log_prob = {}
 for fil in sorted(glob.glob("poems/*.txt")) :
@@ -40,8 +40,8 @@ for fil in sorted(words.keys()) :
     prob = {}
     for artist, d in log_prob.items():
         prob[artist] = 0
-        for word in d :
-            prob[artist] += ( log_prob[artist][word] * words[fil].get(word,0) )
+        for word in words[fil] :
+            prob[artist] += ( log_prob[artist].get(word,0) * words[fil].get(word,0) )
 
     chosen = ''
     sortedKeys = sorted(prob, key=prob.get, reverse=True)
