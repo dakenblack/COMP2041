@@ -27,12 +27,13 @@ for fil in sorted(glob.glob("poems/*.txt")) :
     allCount = len(arr)
 
     log_prob[artist] = {}
-    for fil1, d in words.items() :
+    for _, d in words.items() :
         for word in d :
             if (word in log_prob[artist]) :
                 continue
 
             count = len(list(filter(lambda x: x == word,list(map(lambda x: x.lower(), arr)))))
+            print((count+1) / allCount)
             log_prob[artist][word] = math.log((count+1) / allCount)
     F.close()
 
