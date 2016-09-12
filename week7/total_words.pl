@@ -4,4 +4,5 @@ use strict;
 
 my @arr = <STDIN>;
 @arr = split(/[^a-zA-Z]+/, join(' ',@arr));
-print scalar @arr;
+my $count = scalar @arr;
+print "$count words\n";
