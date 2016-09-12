@@ -1,5 +1,10 @@
 #!/usr/bin/perl
 
+my $debug = 0;
+if ($ARGV[0] eq "-d"){
+  $debug = 1;
+  shift @ARGV;
+}
 my %words;
 foreach my $file (@ARGV) {
   open(F,"<$file") or die "$0: can't open $file\n";
@@ -7,7 +12,13 @@ foreach my $file (@ARGV) {
   @arr = split(/[^a-zA-Z]+/, join(' ',@arr));
   @arr = grep { $_ ne '' } @arr;
   foreach my $word (@arr) {
-    $words{"$file"}{"$word"} = '';
+    chomp $word;
+    $word = lc $word;
+    if(exists $words{"$file"}{"$word"}){
+      $words{"$file"}{"$word"} ++;
+    } else {
+      $words{"$file"}{"$word"} = 1;
+    }
   }
 }
 
@@ -47,21 +58,22 @@ foreach $file (keys %words) {
   foreach $artist (keys %log_prob) {
     $prob{"$artist"} = 0;
     foreach $word (keys %{ $words{"$file"} }) {
-      $prob{"$artist"} += $log_prob{"$artist"}{"$word"};
+      $prob{"$artist"} += ( $log_prob{"$artist"}{"$word"} * $words{"$file"}{"$word"});
     }
   }
-  print "@{[%prob]}";
 
-  # my $chosen = '';
-  # foreach my $artist (keys %prob) {
-  #   if($chosen eq '') {
-  #     $chosen = $artist;
-  #     next;
-  #   }
-  #   if($prob{"$artist"} > $prob{"$chosen"}) {
-  #     $chosen = $artist;
-  #   }
-  # }
-
-  # print "$chosen\n";
+  my $chosen = '';
+  foreach my $artist (keys %prob) {
+    if($debug == 1) {
+      printf "%s: log_probability of %.1f for %s\n", $file, $prob{"$artist"}, $artist ;
+    }
+    if($chosen eq '') {
+      $chosen = $artist;
+      next;
+    }
+    if($prob{"$artist"} > $prob{"$chosen"}) {
+      $chosen = $artist;
+    }
+  }
+  printf "%s most resembles the work of %s (log-probability=%.1f)\n", $file, $chosen, $prob{"$chosen"};
 }
