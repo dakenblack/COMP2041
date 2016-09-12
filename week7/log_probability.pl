@@ -3,6 +3,7 @@
 use warnings;
 use strict;
 
+my %log_prob;
 my $word = lc $ARGV[0];
 foreach my $file (glob "poems/*.txt") {
   my $artist = $file;
@@ -24,8 +25,8 @@ foreach my $file (glob "poems/*.txt") {
     }
   }
 
-  my $log_prob = log (($count + 1 ) / $allCount);
+  $log_prob{"$artist"} = log (($count + 1 ) / $allCount);
 
-  printf("log((%1d+1)/%6d) = %8.4f %s\n", $count, $allCount, $log_prob, $artist );
+  printf("log((%1d+1)/%6d) = %8.4f %s\n", $count, $allCount, $log_prob{"$artist"}, $artist );
 
 }
