@@ -21,7 +21,7 @@ sub printCourse {
       if($count == 6) {
         $count = 0;
         $lecFound = 0;
-        printLecture($teaching,$_);
+        printLecture($teaching,$_, $code);
       }
     } else {
       if(/<td class="data"><a href="#([A-Z]\d)-\d{4}">Lecture<\/a><\/td>/){
@@ -35,8 +35,8 @@ sub printCourse {
 #@param $teaching teaching period
 #@param $text html text
 sub printLecture {
-  my ($teaching, $text) = @_;
+  my ($teaching, $text, $course) = @_;
   $text =~ s/^\s+//;
   $text =~ s/<td class="data">(.*?)<\/td>//;
-  print "$teaching $1\n" if (! ($1 eq "") )
+  print "$course: $teaching $1\n" if (! ($1 eq "") )
 }
