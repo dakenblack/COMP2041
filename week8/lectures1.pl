@@ -3,6 +3,13 @@
 use strict;
 use warnings;
 
+my $tuple = 0;
+
+if ($ARGV[0] eq "-d") {
+  shift @ARGV;
+  $tuple = 1;
+}
+
 for my $course (@ARGV) {
   printCourse($course);
 }
@@ -44,13 +51,17 @@ sub printCourse {
 #@param $course course code
 sub printLecture {
   my ($teaching, $text, $course) = @_;
-
-  for my $el (split /\(.*?\), ?/,$text) {
-    $el =~ s/\(.*?\)//;
-    my @arr = split /[ \-:]+/, $el;
-    @arr = grep !/00/, @arr;
-    for my $hour ($arr[1] .. $arr[2]) {
-      print "$teaching $course $arr[0] $hour\n"
+  if (! $tuple) {
+    print "$course: $teaching $1\n";
+  } else {
+    for my $el (split /\(.*?\), ?/,$text) {
+      $el =~ s/\(.*?\)//;
+      my @arr = split /[ \-:]+/, $el;
+      @arr = grep !/00/, @arr;
+      print("DEBUG: @arr\n");
+      for my $hour ($arr[1] .. ($arr[2] - 1)) {
+        #print "$teaching $course $arr[0] $hour\n"
+      }
     }
   }
 }
