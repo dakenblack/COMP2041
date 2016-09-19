@@ -44,13 +44,13 @@ sub printCourse {
 #@param $course course code
 sub printLecture {
   my ($teaching, $text, $course) = @_;
-  my %hours;
 
   for my $el (split /\(.*?\), ?/,$text) {
     $el =~ s/\(.*?\)//;
     my @arr = split /[ \-:]+/, $el;
     @arr = grep !/00/, @arr;
-    print(@arr);
-    #arr is now a 3 element array with day, start hour and end hour
+    for my $hour ($arr[1] .. $arr[2]) {
+      print "$teaching $course $arr[0] $hour\n"
+    }
   }
 }
