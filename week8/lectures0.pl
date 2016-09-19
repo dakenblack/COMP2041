@@ -23,15 +23,17 @@ sub printCourse {
       if($count == 6) {
         $count = 0;
         $lecFound = 0;
-        printLecture($teaching,$_, $code);
+
+        s/<td class="data">(.*?)<\/td>/$1/;
+        if((! "$_" eq "") && (! exists $hash{$teaching}{"$_"})) {
+          $hash{$teaching}{$_} = "";
+          printLecture($teaching,$_, $code);
+        }
       }
     } else {
       if(/<td class="data"><a href="#([A-Z]\d)-\d{4}">Lecture<\/a><\/td>/){
-        if (! exists $hash{$1}{"$_"}) {
           $lecFound = 1;
           $teaching = "$1";
-          $hash{$1}{"$_"} = "";
-        }
       }
     }
   }
@@ -41,6 +43,5 @@ sub printCourse {
 #@param $text html text
 sub printLecture {
   my ($teaching, $text, $course) = @_;
-  $text =~ s/<td class="data">(.*?)<\/td>//;
-  print "$course: $teaching $1\n" if (! ($1 eq "") )
+  print "$course: $teaching $1\n";
 }
