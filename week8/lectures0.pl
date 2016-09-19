@@ -17,6 +17,7 @@ sub printCourse {
   my $teaching = "";
   while(<F>) {
     chomp;
+    s/^\s+//;
     if($lecFound) {
       $count ++;
       if($count == 6) {
@@ -26,10 +27,10 @@ sub printCourse {
       }
     } else {
       if(/<td class="data"><a href="#([A-Z]\d)-\d{4}">Lecture<\/a><\/td>/){
-        if (! exists $hash{$1}) {
+        if (! exists $hash{$1}{"$_"}) {
           $lecFound = 1;
           $teaching = "$1";
-          $hash{$1} = "";
+          $hash{$1}{"$_"} = "";
         }
       }
     }
@@ -40,7 +41,6 @@ sub printCourse {
 #@param $text html text
 sub printLecture {
   my ($teaching, $text, $course) = @_;
-  $text =~ s/^\s+//;
   $text =~ s/<td class="data">(.*?)<\/td>//;
   print "$course: $teaching $1\n" if (! ($1 eq "") )
 }
