@@ -10,6 +10,7 @@ for my $course (@ARGV) {
 #@param $code course code
 sub printCourse {
   my ($code) = @_;
+  my %hash;
   open F, "wget -q -O- \"http://timetable.unsw.edu.au/2016/" . "$code" . ".html\" |" or die;
   my $lecFound = 0;
   my $count = 0;
@@ -25,8 +26,11 @@ sub printCourse {
       }
     } else {
       if(/<td class="data"><a href="#([A-Z]\d)-\d{4}">Lecture<\/a><\/td>/){
-        $lecFound = 1;
-        $teaching = "$1";
+        if (! exists $hash{$1}) {
+          $lecFound = 1;
+          $teaching = "$1";
+          $hash{$1} = "";
+        }
       }
     }
   }
