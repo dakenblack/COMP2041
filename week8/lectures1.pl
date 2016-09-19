@@ -58,9 +58,21 @@ sub printLecture {
       $el =~ s/\(.*?\)//;
       my @arr = split /[ \-:]+/, $el;
       @arr = grep !/00/, @arr;
-      print("DEBUG: @arr\n");
-      for my $hour ($arr[1] .. ($arr[2] - 1)) {
-        #print "$teaching $course $arr[0] $hour\n"
+      my @days;
+      my @hours;
+      for my $ele (@arr) {
+          $ele =~ s/(\w+)[, ]*/$1/;
+          if ($ele =~ /[^\d]+/) {
+            push @days, "$ele";
+          } else {
+            push @hours, "$ele";
+          }
+      }
+
+      for my $day (@days) {
+        for my $hour ($hours[0] .. ($hours[1] - 1)) {
+          print "$teaching $course $day $hour\n"
+        }
       }
     }
   }
