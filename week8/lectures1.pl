@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my $tuple = 0;
-
+my %hash;
 if ($ARGV[0] eq "-d") {
   shift @ARGV;
   $tuple = 1;
@@ -17,7 +17,6 @@ for my $course (@ARGV) {
 #@param $code course code
 sub printCourse {
   my ($code) = @_;
-  my %hash;
   open F, "wget -q -O- \"http://timetable.unsw.edu.au/2016/" . "$code" . ".html\" |" or die;
   my $lecFound = 0;
   my $count = 0;
@@ -54,6 +53,7 @@ sub printLecture {
   if (! $tuple) {
     print "$course: $teaching $1\n";
   } else {
+    my %hash;
     for my $el (split /\(.*?\), ?/,$text) {
       $el =~ s/\(.*?\)//;
       my @arr = split /[ \-:]+/, $el;
@@ -71,7 +71,10 @@ sub printLecture {
 
       for my $day (@days) {
         for my $hour ($hours[0] .. ($hours[1] - 1)) {
-          print "$teaching $course $day $hour\n"
+          if(! exists $hash{"$day"}{"$hour"}){
+            $hash{"$day"}{"$hour"} = "";
+            print "$teaching $course $day $hour\n"
+          }
         }
       }
     }
