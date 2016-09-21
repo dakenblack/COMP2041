@@ -1,7 +1,8 @@
 #!/bin/perl
 # @arg input file
 # assumes plpy.pl is in the current directory
-
+# PITFALLS:
+#   * cannot work with variables, as variable table is not set between lines
 open F, "<$ARGV[0]" or die;
 
 while(<F>) {
@@ -9,6 +10,7 @@ while(<F>) {
   print "<================>\n";
   print "In : $_ \n";
   s/"/\\"/g;
+  s/\$/\\\$/g;
   $op = `echo "$_" | perl plpy.pl`;
   $flag = 1;
   for $line (split (/\n/, $op)) {
@@ -22,5 +24,5 @@ while(<F>) {
   if ( $op =~ /^\s*$/) {
     print "Out: \n"
   }
-  print "<=======END======>\n";
+  print "<=======END======>\n\n";
 }
