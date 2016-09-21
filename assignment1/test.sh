@@ -6,14 +6,15 @@ orig=`perl $1`
 code=`cat "$1" | perl plpy.pl`
 new=`python -c "$code"`
 dif=`diff <(echo "$orig") <(echo "$new")`
+divider="<=======================================>"
 echo "Converted Code:"
 echo "$code"
-echo "<============================>"
+echo "$divider"
 echo "Original Output: "
 echo "$orig"
-echo "<============================>"
+echo "$divider"
 echo "New Output:"
 echo "$new"
-echo "<============================>"
+echo "$divider"
 echo "Diff:"
 echo "$dif"
