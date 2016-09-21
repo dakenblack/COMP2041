@@ -5,7 +5,7 @@
 echo -ne "testing : $1 "
 
 orig=`perl $1`
-code=`cat "$1" | perl plpy.pl`
+code=`perl plpy.pl $1`
 new=`python -c "$code" 2>&1`
 dif=`diff <(echo "$orig") <(echo "$new")`
 

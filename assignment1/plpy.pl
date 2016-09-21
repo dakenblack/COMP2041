@@ -90,7 +90,10 @@ sub translateExpression {
     return "$1";
   } else {
     #unimplemented clause for operators
-    #for now it seems like it works
+    #convert all variables to their appropriate variable names
+    while ($expr =~ /(\$\w+)/ ) {
+      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    }
     return "$expr";
   }
 }
