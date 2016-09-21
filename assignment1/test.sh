@@ -2,6 +2,8 @@
 # @arg input file
 # assumes plpy.pl is in the current directory
 
+echo -ne "testing : $1 "
+
 orig=`perl $1`
 code=`cat "$1" | perl plpy.pl`
 new=`python -c "$code" 2>&1`

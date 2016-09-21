@@ -1,0 +1,10 @@
+#!/bin/sh
+
+./test.sh set0/hello_world.pl
+./test.sh set0/my_test.pl
+
+./test.sh set1/answer0.pl
+./test.sh set1/answer1.pl
+./test.sh set1/answer2.pl
+./test.sh set1/answer3.pl
+./test.sh set1/answer4.pl
