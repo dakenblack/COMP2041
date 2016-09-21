@@ -4,20 +4,25 @@
 use strict;
 use warnings;
 
-while(<STDIN>){
-  my $op;
-  chomp;
-  s/^\s+//;
+main();
 
-  if(/^#!\/usr\/bin\/perl/){
-    $op = translateHashbang();
-  } elsif (/^print\s+(.*)/) {
-    $op =  translatePrint();
-  } else {
-    $op = $_;
+sub main {
+  while(<STDIN>){
+    my $op;
+    chomp;
+    s/^\s+//;
+
+    if(/^#!\/usr\/bin\/perl/){
+      $op = translateHashbang();
+    } elsif (/^print\s+(.*)/) {
+      $op =  translatePrint();
+    } else {
+      $op = $_;
+    }
+    print "$op\n";
   }
-  print "$op\n";
 }
+
 
 sub translateHashbang {
   return "#!/usr/bin/python3 -u";
