@@ -8,3 +8,4 @@
 ./test.sh set1/answer2.pl
 ./test.sh set1/answer3.pl
 ./test.sh set1/answer4.pl
+./test.sh set1/my_test0.pl
