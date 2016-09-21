@@ -49,11 +49,7 @@ sub translateHashbang {
 sub translatePrint {
   my ($line) = @_;
   /^print\s+(.*)/;
-  if($1 =~ /("[^"]*")/) {
-    return "print(" . translateString($1) . ",end=\"\")";
-  } else {
-    return $_;
-  }
+  return "print(" . translateExpression($1) . ",end=\"\")";
 }
 
 sub translateString {
@@ -81,11 +77,12 @@ sub translateAssignment {
 
 sub translateExpression {
   my ($expr) = @_;
-  $_ = $expr;
-  if(/("[^"]*")/) {
+  $expr =~ s/\s*;\s*$//;
+  if($expr =~ /^("[^"]*")$/) {
+    #print "HERE\n";
     # string constant
     return translateString($1);
-  } elsif (/^(\d+)$/) {
+  } elsif ($expr =~ /^(\d+)$/) {
     # numerical constant or unquoted string
     return "$1";
   } else {
@@ -94,6 +91,7 @@ sub translateExpression {
     while ($expr =~ /(\$\w+)/ ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
+    $expr =~ s/\s*(\,)\s*/ + /g;
     return "$expr";
   }
 }
