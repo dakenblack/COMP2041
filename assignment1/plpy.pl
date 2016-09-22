@@ -49,7 +49,7 @@ sub translateHashbang {
 sub translatePrint {
   my ($line) = @_;
   /^print\s+(.*)/;
-  return "print(" . translateExpression($1) . ",end=\"\")";
+  return "print(" . translateExpression($1,1) . ",end=\"\")";
 }
 
 sub translateString {
@@ -72,11 +72,11 @@ sub translateAssignment {
   my ($var, $expr) = split(/=/, $line, 2) ;
   $var =~ s/\$// ;
   $var =~ s/\s+$//;
-  return "$var = " . translateExpression($expr) ;
+  return "$var = " . translateExpression($expr,0) ;
 }
 
 sub translateExpression {
-  my ($expr) = @_;
+  my ($expr,$isString) = @_;
   $expr =~ s/\s*;\s*$//;
   if($expr =~ /^("[^"]*")$/) {
     #print "HERE\n";
@@ -88,10 +88,22 @@ sub translateExpression {
   } else {
     #unimplemented clause for operators
     #convert all variables to their appropriate variable names
-    while ($expr =~ /(\$\w+)/ ) {
-      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    if(not $isString) {
+      while ($expr =~ /(\$\w+)/g ) {
+        $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+      }
+    } else {
+      my $temp = "";
+      for my $subExpr (split /,/ , $expr) {
+        while($subExpr =~ /(\$\w+)/g){
+          $subExpr = join( translateVar($1) , split(/\Q$1/, $subExpr, 2) );
+        }
+        $temp = $temp . "str(" . $subExpr . ") + ";
+      }
+      $temp =~ s/\+\s*$//;
+      $expr = $temp;
     }
-    $expr =~ s/\s*(\,)\s*/ + /g;
+
     return "$expr";
   }
 }
