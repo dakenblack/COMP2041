@@ -21,8 +21,13 @@ sub main {
   while(<>){
     my $op;
     chomp;
+    while(/}/) {
+      $globalIndent --;
+      s/}//;
+    }
     s/^\s+//;
     s/[\s\n]+$//;
+
 
     if(/^#!\/usr\/bin\/perl/){
       # #!/usr/bin/perl
@@ -43,7 +48,6 @@ sub main {
       $op =  translateFunction($_);
     } elsif (/^}/) {
       $op =  "";
-      $globalIndent --;
     } else {
       $op = $_;
     }

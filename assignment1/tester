@@ -32,4 +32,8 @@ fi
 ./test.sh $s set3/tetrahedral.pl
 ./test.sh $s set3/cookie0.pl -i "I'm\nenjoying\nthis\n\ncookie"
 
-./test.sh set4/echonl.1.pl -i "1 2 3 4 4"
+./test.sh $s set4/echonl.1.pl -i "1 2 3 4 4"
+./test.sh $s set4/size.pl -i "1"
+./test.sh $s set4/size.pl -i "10"
+./test.sh $s set4/size.pl -i "-1"
+./test.sh $s set4/size.pl -i "0"
