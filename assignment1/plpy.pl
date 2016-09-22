@@ -57,7 +57,7 @@ sub main {
 }
 
 sub translateHashbang {
-  return "#!/usr/bin/python3 -u";
+  return "#!/usr/bin/python3 -u\nimport sys";
 }
 
 sub translateIfWhile {
@@ -98,19 +98,28 @@ sub translateString {
 
 sub translateVar {
   my ($var) = @_;
-  $var =~ s/[\$@]// ;
+  if($var =~ /[\$@]ARGV/) {
+    $var =~ s/[\$@]ARGV/sys.argv/g;
+  } else {
+    $var =~ s/[\$@]// ;
+  }
   return $var;
 }
 
 sub translateExpression {
   my ($expr,$isString) = @_;
   $expr =~ s/\s*;\s*$//;
-  if($expr =~ /^\s*("[^"]*")\s*$/) {
+  if($expr =~ /^[\$@]\w+$/) {
+    return translateVar($expr);
+  } elsif($expr =~ /^\s*(["'].*["'])\s*$/) {
     # string constant
     return translateString($1);
   } elsif ($expr =~ /^\s*(\d+)\s*$/) {
     # numerical constant or unquoted string
     return "$1";
+  } elsif ($expr =~ /^\s*([a-zA-Z]\w*)\s*\((.*?)\)/i) {
+    #print "<$1> <$2>\n";
+    return getFunction($1,$2);
   } else {
     #unimplemented clause for operators
     #convert all variables to their appropriate variable names
@@ -131,5 +140,15 @@ sub translateExpression {
     }
 
     return "$expr";
+  }
+}
+
+sub getFunction {
+  my ($func, $arg) = @_;
+  if ($func eq "join") {
+    my @args = split /\s*,\s*/, $arg;
+    return translateExpression($args[0]) . ".join(" . translateExpression($args[1]) . ")"
+  } else {
+    return genericFunc($func,$arg);
   }
 }
