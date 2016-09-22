@@ -37,6 +37,8 @@ sub main {
       $op =  translateAssignment($_);
     } elsif (/^(for|foreach)\s+(.*)/) {
       $op =  translateFor();
+    } elsif (/^\w+;?$/) {
+      $op =  translateStatement($_);
     } elsif (/^}/) {
       $op =  "";
       $globalIndent --;
@@ -140,6 +142,18 @@ sub translateExpression {
     }
 
     return "$expr";
+  }
+}
+
+sub translateStatement {
+  my ($st) = @_;
+  $st =~ s/\s*;\s*$//;
+  if ($st =~ /last/) {
+    return "break";
+  } elsif($st =~ /next/ ) {
+    return "continue";
+  } else {
+    return $st;
   }
 }
 
