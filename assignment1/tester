@@ -9,3 +9,8 @@
 ./test.sh set1/answer3.pl
 ./test.sh set1/answer4.pl
 ./test.sh set1/my_test0.pl
+
+
+./test.sh set2/answer5.pl
+./test.sh set2/answer6.pl
+./test.sh set2/iota.pl
