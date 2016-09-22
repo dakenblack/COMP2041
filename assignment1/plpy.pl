@@ -93,6 +93,10 @@ sub translateAssignment {
 
 sub translateString {
   my ($str) = @_;
+  while ($str =~ /(\$\w+\[.*?])/ ) {
+    #translate arrayindices
+    $str = join( "\"+ str(" . translateVar($1) . ") +\"", split(/\Q$1/, $str, 2) );
+  }
   while ($str =~ /(\$\w+)/ ) {
     $str = join( "\"+ str(" . translateVar($1) . ") +\"", split(/\Q$1/, $str, 2) );
   }
@@ -104,6 +108,8 @@ sub translateVar {
   my ($var) = @_;
   if ($var =~ /^\$#(\w+)/) {
     $var = "len(" . translateVar("\$$1") . ")"
+  } elsif($var =~/(\$\w+)\[(.*?)]/) {
+    return translateVar($1) . "[". translateVar($2) . "]";
   } elsif($var =~ /[\$@]ARGV/) {
     $var =~ s/[\$@]ARGV/sys.argv/g;
   } else {
@@ -128,7 +134,6 @@ sub translateExpression {
     # numerical constant or unquoted string
     return "$1";
   } elsif ($expr =~ /^\s*([a-zA-Z]\w*)\s*\((.*?)\)/i) {
-    #print "<$1> <$2>\n";
     return getFunction($1,$2);
   } else {
     #unimplemented clause for operators
@@ -160,7 +165,7 @@ sub handleOperators {
     my $lim = $2 + 1;
     return "range($1,$lim)";
   } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
-    return "range(" . translateVar($1) . ", " . translateVar($2) . " + 1)"
+    return "range(" . translateVar($1) . ", " . translateVar($2) . ")"
   }
   $expr =~ s/\seq\s/ == /;
   return $expr;
