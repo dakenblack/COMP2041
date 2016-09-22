@@ -30,4 +30,4 @@ fi
 ./test.sh $s set3/five.pl
 ./test.sh $s set3/prime0.pl
 ./test.sh $s set3/tetrahedral.pl
-./test.sh $s set3/cookie0.pl -i "asd\ncookie"
+./test.sh $s set3/cookie0.pl -i "I'm\nenjoying\nthis\n\ncookie"
