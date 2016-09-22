@@ -5,7 +5,7 @@ if [ $1 = "-s" ] ; then
   s="-s"
 fi
 
-./test.sh $s set0/hello_world.pl $s
+./test.sh $s set0/hello_world.pl
 ./test.sh $s set0/my_test.pl
 
 ./test.sh $s set1/answer0.pl
