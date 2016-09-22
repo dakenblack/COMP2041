@@ -154,6 +154,10 @@ sub handleOperators {
   while ($expr =~ /([\$@]\w+)/g ) {
     $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
   }
+  if ($expr =~ /(\d+)\s*\.\.\s*(\d+)/) {
+    my $lim = $2 + 1;
+    return "range($1,$lim)";
+  }
   $expr =~ s/\seq\s/ == /;
   return $expr;
 }
