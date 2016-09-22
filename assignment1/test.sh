@@ -3,17 +3,28 @@
 # assumes plpy.pl is in the current directory
 
 suppress=0
-if [ $1 = "-s" ] ; then
-  file=$2
-  suppress=1
-else
-  file=$1
-fi
+args=0
+argv=""
+for i in "$@" ; do
+  if [ "$args" -eq "1" ] ; then
+    argv=$i
+    args=2
+  elif [ $i = "-s" ] ; then
+    suppress=1
+  elif [ $i = "-a" ] ; then
+    args=1
+  else
+    file=$i
+  fi
+done\
 
-echo -ne "testing : $file "
-orig=`perl $file`
+echo -ne "testing  : $file "
+if [ -n "$argv" ] ; then
+  echo -ne "\nwith arg : $argv "
+fi
+orig=`perl $file -c $argv`
 code=`perl plpy.pl $file`
-new=`python -c "$code" 2>&1`
+new=`python -c "$code" $argv 2>&1`
 dif=`diff <(echo "$orig") <(echo "$new")`
 
 RED='\033[0;31m'
