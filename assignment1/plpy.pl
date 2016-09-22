@@ -1,10 +1,6 @@
 #!/usr/bin/perl
 # by Jabez Wilson (jabez.wilson0@gmail.com)
-#
-# NOTE: every if must have a paired else
-# TODO
 #   * add flag to make it print everything step wise
-
 
 use strict;
 use warnings;
@@ -34,12 +30,9 @@ sub main {
     } elsif (/^print\s+(.*)/) {
       # any print statement
       $op =  translatePrint();
-    } elsif (/^if\s+(.*)/) {
+    } elsif (/^(if|while)\s+\((.*)\)/) {
       # any if statement
-      $op =  translateIf();
-    } elsif (/^while\s+(.*)/) {
-      # any if statement
-      $op =  translateWhile();
+      $op =  translateIfWhile();
     } elsif (/^\$\w+/) {
       $op =  translateAssignment($_);
     } elsif (/^}/) {
@@ -65,20 +58,12 @@ sub translateHashbang {
   return "#!/usr/bin/python3 -u";
 }
 
-sub translateIf {
+sub translateIfWhile {
   my ($line) = @_;
-  /^if\s+\((.*)\)/;
+  /^(if|while)\s+\((.*)\)/;
   $incIndentFlag = 1;
-  return "if(" . translateExpression($1,0) . "):";
+  return "$1(" . translateExpression($2,0) . "):";
 }
-
-sub translateWhile {
-  my ($line) = @_;
-  /^while\s+\((.*)\)/;
-  $incIndentFlag = 1;
-  return "while(" . translateExpression($1,0) . "):";
-}
-
 
 sub translatePrint {
   my ($line) = @_;
