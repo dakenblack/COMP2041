@@ -35,9 +35,13 @@ sub main {
     } elsif (/^print\s+(.*)/) {
       # any print statement
       $op =  translatePrint();
-    } elsif (/^(if|while)\s+\((.*)\)/) {
+    } elsif (/^(if|while|elsif)\s+\((.*)\)/) {
       # any if statement
-      $op =  translateIfWhile();
+      $op =  translateIfWhile($_);
+    } elsif (/^else\s*{/) {
+      # any if statement
+      $incIndentFlag = 1;
+      $op =  "else:";
     } elsif (/^\S+\s*=/) {
       $op =  translateAssignment($_);
     } elsif (/^(for|foreach)\s+(.*)/) {
@@ -70,9 +74,13 @@ sub translateHashbang {
 
 sub translateIfWhile {
   my ($line) = @_;
-  /^(if|while)\s+\((.*)\)/;
+  /^(if|while|elsif)\s+\((.*)\)/;
   $incIndentFlag = 1;
-  return "$1(" . translateExpression($2,0) . "):";
+  if($1 eq "elsif") {
+    return "elif(" . translateExpression($2,0) . "):";
+  } else {
+    return "$1(" . translateExpression($2,0) . "):";
+  }
 }
 
 sub translateFor {
