@@ -2,7 +2,7 @@
 # @arg input file
 # assumes plpy.pl is in the current directory
 # PITFALLS:
-#   * cannot work with variables, as variable table is not set between lines
+#   * cannot display indentations
 open F, "<$ARGV[0]" or die;
 
 while(<F>) {
