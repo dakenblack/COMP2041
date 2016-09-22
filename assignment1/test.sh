@@ -20,7 +20,7 @@ done\
 
 echo -ne "testing  : $file "
 if [ -n "$argv" ] ; then
-  echo -ne "\nwith arg : $argv "
+  echo -ne ", with arg : $argv "
 fi
 orig=`perl $file -c $argv`
 code=`perl plpy.pl $file`
