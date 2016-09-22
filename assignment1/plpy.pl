@@ -39,6 +39,8 @@ sub main {
       $op =  translateFor();
     } elsif (/^\w+;?$/) {
       $op =  translateStatement($_);
+    } elsif (/^\w+\s+\$?\w+/) {
+      $op =  translateFunction($_);
     } elsif (/^}/) {
       $op =  "";
       $globalIndent --;
@@ -111,6 +113,10 @@ sub translateVar {
 sub translateExpression {
   my ($expr,$isString) = @_;
   $expr =~ s/\s*;\s*$//;
+  if ($expr =~ /<STDIN>/) {
+    $expr =~ s/<STDIN>/input()/;
+    return $expr;
+  }
   if($expr =~ /^[\$@]\w+$/) {
     return translateVar($expr);
   } elsif($expr =~ /^\s*(["'].*["'])\s*$/) {
@@ -148,6 +154,7 @@ sub handleOperators {
   while ($expr =~ /([\$@]\w+)/g ) {
     $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
   }
+  $expr =~ s/\seq\s/ == /;
   return $expr;
 }
 
@@ -160,6 +167,15 @@ sub translateStatement {
     return "continue";
   } else {
     return $st;
+  }
+}
+
+sub translateFunction {
+  my ($line) = @_;
+  if ($line =~ /^chomp\s*(\$?\w*)/) {
+    return  translateVar($1) . ".strip()";
+  } else {
+    return $line
   }
 }
 
