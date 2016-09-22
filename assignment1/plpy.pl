@@ -130,19 +130,24 @@ sub translateExpression {
         $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
       }
     } else {
-      my $temp = "";
-      for my $subExpr (split /,/ , $expr) {
-        while($subExpr =~ /(\$\w+)/g){
-          $subExpr = join( translateVar($1) , split(/\Q$1/, $subExpr, 2) );
-        }
-        $temp = $temp . "str(" . $subExpr . ") + ";
-      }
-      $temp =~ s/\+\s*$//;
-      $expr = $temp;
+      $expr = handleOperators($expr);
     }
 
     return "$expr";
   }
+}
+
+sub handleOperators {
+  my ($expr) = @_;
+  my $temp = "";
+  for my $subExpr (split /,/ , $expr) {
+    while($subExpr =~ /(\$\w+)/g){
+      $subExpr = join( translateVar($1) , split(/\Q$1/, $subExpr, 2) );
+    }
+    $temp = $temp . "str(" . $subExpr . ") + ";
+  }
+  $temp =~ s/\+\s*$//;
+  return $temp;
 }
 
 sub translateStatement {
