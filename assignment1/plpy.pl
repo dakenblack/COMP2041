@@ -108,7 +108,7 @@ sub translateExpression {
   if($expr =~ /^\s*("[^"]*")\s*$/) {
     # string constant
     return translateString($1);
-  } elsif ($expr =~ /^(\d+)$/) {
+  } elsif ($expr =~ /^\s*(\d+)\s*$/) {
     # numerical constant or unquoted string
     return "$1";
   } else {
