@@ -21,3 +21,10 @@ fi
 ./test.sh $s set2/iota.pl
 ./test.sh $s set2/test0.pl
 ./test.sh $s set2/test1.pl
+
+
+./test.sh $s set3/echo.2.pl
+./test.sh $s set3/echonl.0.pl
+./test.sh $s set3/five.pl
+./test.sh $s set3/prime0.pl
+./test.sh $s set3/tetrahedral.pl
