@@ -105,8 +105,7 @@ sub translateVar {
 sub translateExpression {
   my ($expr,$isString) = @_;
   $expr =~ s/\s*;\s*$//;
-  if($expr =~ /^("[^"]*")$/) {
-    #print "HERE\n";
+  if($expr =~ /^\s*("[^"]*")\s*$/) {
     # string constant
     return translateString($1);
   } elsif ($expr =~ /^(\d+)$/) {
