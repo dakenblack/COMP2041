@@ -33,8 +33,10 @@ sub main {
     } elsif (/^(if|while)\s+\((.*)\)/) {
       # any if statement
       $op =  translateIfWhile();
-    } elsif (/^\$\w+/) {
+    } elsif (/^\S+\s*=/) {
       $op =  translateAssignment($_);
+    } elsif (/^(for|foreach)\s+(.*)/) {
+      $op =  translateFor();
     } elsif (/^}/) {
       $op =  "";
       $globalIndent --;
@@ -65,10 +67,24 @@ sub translateIfWhile {
   return "$1(" . translateExpression($2,0) . "):";
 }
 
+sub translateFor {
+  my ($line) = @_;
+  /^(for|foreach)\s+(\$\w+)\s+\((.*)\)/;
+  $incIndentFlag = 1;
+  return "for " . translateVar($2) . " in " . translateExpression($3,0) . ":";
+}
+
 sub translatePrint {
   my ($line) = @_;
   /^print\s+(.*)/;
   return "print(" . translateExpression($1,1) . ",end=\"\")";
+}
+
+sub translateAssignment {
+  my ($line) = @_;
+  my ($var, $expr) = split(/=/, $line, 2) ;
+  $var =~ s/\s+$//;
+  return translateVar($var) . " = " . translateExpression($expr,0) ;
 }
 
 sub translateString {
@@ -82,16 +98,8 @@ sub translateString {
 
 sub translateVar {
   my ($var) = @_;
-  $var =~ s/\$// ;
+  $var =~ s/[\$@]// ;
   return $var;
-}
-
-sub translateAssignment {
-  my ($line) = @_;
-  my ($var, $expr) = split(/=/, $line, 2) ;
-  $var =~ s/\$// ;
-  $var =~ s/\s+$//;
-  return "$var = " . translateExpression($expr,0) ;
 }
 
 sub translateExpression {
@@ -108,7 +116,7 @@ sub translateExpression {
     #unimplemented clause for operators
     #convert all variables to their appropriate variable names
     if(not $isString) {
-      while ($expr =~ /(\$\w+)/g ) {
+      while ($expr =~ /([\$@]\w+)/g ) {
         $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
       }
     } else {

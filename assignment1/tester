@@ -19,3 +19,5 @@ fi
 ./test.sh $s set2/answer5.pl
 ./test.sh $s set2/answer6.pl
 ./test.sh $s set2/iota.pl
+./test.sh $s set2/test0.pl
+./test.sh $s set2/test1.pl

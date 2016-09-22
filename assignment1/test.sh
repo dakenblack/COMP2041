@@ -16,7 +16,6 @@ code=`perl plpy.pl $file`
 new=`python -c "$code" 2>&1`
 dif=`diff <(echo "$orig") <(echo "$new")`
 
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
