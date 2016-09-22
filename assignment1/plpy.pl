@@ -16,6 +16,9 @@ if(scalar @ARGV != 0 and ($ARGV[0] eq "-d" or $ARGV[0] eq "--debug")) {
   shift @ARGV;
 }
 
+my $globalIndent = 0;
+my $incIndentFlag = 0;
+
 main();
 
 sub main {
@@ -31,19 +34,39 @@ sub main {
     } elsif (/^print\s+(.*)/) {
       # any print statement
       $op =  translatePrint();
+    } elsif (/^if\s+(.*)/) {
+      # any print statement
+      $op =  translateIf();
     } elsif (/^\$\w+/) {
       $op =  translateAssignment($_);
+    } elsif (/^}/) {
+      $op =  "";
+      $globalIndent --;
     } else {
       $op = $_;
     }
     if(not $debug) {
+      for (1 .. $globalIndent ) {
+        print "\t";
+      }
       print "$op\n";
+      if ($incIndentFlag) {
+        $globalIndent ++;
+        $incIndentFlag = 0;
+      }
     }
   }
 }
 
 sub translateHashbang {
   return "#!/usr/bin/python3 -u";
+}
+
+sub translateIf {
+  my ($line) = @_;
+  /^if\s+\((.*)\)/;
+  $incIndentFlag = 1;
+  return "if(" . translateExpression($1,0) . "):";
 }
 
 sub translatePrint {
