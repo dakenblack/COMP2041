@@ -1,16 +1,21 @@
 #!/bin/sh
 
-./test.sh set0/hello_world.pl
-./test.sh set0/my_test.pl
+s=""
+if [ $1 = "-s" ] ; then
+  s="-s"
+fi
 
-./test.sh set1/answer0.pl
-./test.sh set1/answer1.pl
-./test.sh set1/answer2.pl
-./test.sh set1/answer3.pl
-./test.sh set1/answer4.pl
-./test.sh set1/my_test0.pl
+./test.sh $s set0/hello_world.pl $s
+./test.sh $s set0/my_test.pl
+
+./test.sh $s set1/answer0.pl
+./test.sh $s set1/answer1.pl
+./test.sh $s set1/answer2.pl
+./test.sh $s set1/answer3.pl
+./test.sh $s set1/answer4.pl
+./test.sh $s set1/my_test0.pl
 
 
-./test.sh set2/answer5.pl
-./test.sh set2/answer6.pl
-./test.sh set2/iota.pl
+./test.sh $s set2/answer5.pl
+./test.sh $s set2/answer6.pl
+./test.sh $s set2/iota.pl
