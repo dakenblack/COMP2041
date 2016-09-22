@@ -35,8 +35,11 @@ sub main {
       # any print statement
       $op =  translatePrint();
     } elsif (/^if\s+(.*)/) {
-      # any print statement
+      # any if statement
       $op =  translateIf();
+    } elsif (/^while\s+(.*)/) {
+      # any if statement
+      $op =  translateWhile();
     } elsif (/^\$\w+/) {
       $op =  translateAssignment($_);
     } elsif (/^}/) {
@@ -68,6 +71,14 @@ sub translateIf {
   $incIndentFlag = 1;
   return "if(" . translateExpression($1,0) . "):";
 }
+
+sub translateWhile {
+  my ($line) = @_;
+  /^while\s+\((.*)\)/;
+  $incIndentFlag = 1;
+  return "while(" . translateExpression($1,0) . "):";
+}
+
 
 sub translatePrint {
   my ($line) = @_;
