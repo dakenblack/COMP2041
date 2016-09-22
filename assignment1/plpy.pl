@@ -126,11 +126,17 @@ sub translateExpression {
     #unimplemented clause for operators
     #convert all variables to their appropriate variable names
     if(not $isString) {
-      while ($expr =~ /([\$@]\w+)/g ) {
-        $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
-      }
-    } else {
       $expr = handleOperators($expr);
+    } else {
+      my $temp = "";
+      for my $subExpr (split /,/ , $expr) {
+        while($subExpr =~ /(\$\w+)/g){
+          $subExpr = join( translateVar($1) , split(/\Q$1/, $subExpr, 2) );
+        }
+        $temp = $temp . "str(" . $subExpr . ") + ";
+      }
+      $temp =~ s/\+\s*$//;
+      $expr = $temp;
     }
 
     return "$expr";
@@ -139,15 +145,10 @@ sub translateExpression {
 
 sub handleOperators {
   my ($expr) = @_;
-  my $temp = "";
-  for my $subExpr (split /,/ , $expr) {
-    while($subExpr =~ /(\$\w+)/g){
-      $subExpr = join( translateVar($1) , split(/\Q$1/, $subExpr, 2) );
-    }
-    $temp = $temp . "str(" . $subExpr . ") + ";
+  while ($expr =~ /([\$@]\w+)/g ) {
+    $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
   }
-  $temp =~ s/\+\s*$//;
-  return $temp;
+  return $expr;
 }
 
 sub translateStatement {
