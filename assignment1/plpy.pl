@@ -102,7 +102,9 @@ sub translateString {
 
 sub translateVar {
   my ($var) = @_;
-  if($var =~ /[\$@]ARGV/) {
+  if ($var =~ /^\$#(\w+)/) {
+    $var = "len(" . translateVar("\$$1") . ")"
+  } elsif($var =~ /[\$@]ARGV/) {
     $var =~ s/[\$@]ARGV/sys.argv/g;
   } else {
     $var =~ s/[\$@]// ;
@@ -157,6 +159,8 @@ sub handleOperators {
   if ($expr =~ /(\d+)\s*\.\.\s*(\d+)/) {
     my $lim = $2 + 1;
     return "range($1,$lim)";
+  } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
+    return "range(" . translateVar($1) . ", " . translateVar($2) . " + 1)"
   }
   $expr =~ s/\seq\s/ == /;
   return $expr;
