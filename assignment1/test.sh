@@ -15,10 +15,10 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 if [ -z "$dif" ] ; then
-  echo -e "${GREEN}<=================PASSED================>${NC}"
+  echo -e "${GREEN}<==============PASSED=============>${NC}"
 else
-  echo -e "${RED}<=================FAILED================>${NC}"
-  divider="<=======================================>"
+  echo -e "${RED}<==============FAILED=============>${NC}"
+  divider="<=================================>"
   echo "$divider"
   echo "Converted Code:"
   echo "$code"
