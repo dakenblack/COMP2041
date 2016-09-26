@@ -5,38 +5,42 @@ if [ $1 = "-s" ] ; then
   s="-s"
 fi
 
-./test.sh $s set0/hello_world.pl
-./test.sh $s set0/my_test.pl
+./tst $s set0/hello_world.pl
+./tst $s set0/my_test.pl
 
-./test.sh $s set1/answer0.pl
-./test.sh $s set1/answer1.pl
-./test.sh $s set1/answer2.pl
-./test.sh $s set1/answer3.pl
-./test.sh $s set1/answer4.pl
-./test.sh $s set1/my_test0.pl
-
-
-./test.sh $s set2/answer5.pl
-./test.sh $s set2/answer6.pl
-./test.sh $s set2/iota.pl
-./test.sh $s set2/test0.pl
-./test.sh $s set2/test1.pl
+./tst $s set1/answer0.pl
+./tst $s set1/answer1.pl
+./tst $s set1/answer2.pl
+./tst $s set1/answer3.pl
+./tst $s set1/answer4.pl
+./tst $s set1/my_test0.pl
 
 
-./test.sh $s set3/echo.2.pl
-./test.sh $s set3/echo.2.pl -a "I love this"
-./test.sh $s set3/echonl.0.pl
-./test.sh $s set3/echonl.0.pl -a "I really love this"
-./test.sh $s set3/five.pl
-./test.sh $s set3/prime0.pl
-./test.sh $s set3/tetrahedral.pl
-./test.sh $s set3/cookie0.pl -i "I'm\nenjoying\nthis\n\ncookie"
+./tst $s set2/answer5.pl
+./tst $s set2/answer6.pl
+./tst $s set2/iota.pl
+./tst $s set2/test0.pl
+./tst $s set2/test1.pl
 
-./test.sh $s set4/echonl.1.pl -i "1 2 3 4 4"
-./test.sh $s set4/size.pl -i "1"
-./test.sh $s set4/size.pl -i "10"
-./test.sh $s set4/size.pl -i "-1"
-./test.sh $s set4/size.pl -i "0"
-./test.sh $s set4/odd0.pl -i "23\n0\n12\n-1\n"
-./test.sh $s set4/odd0.pl -i "23\n0\n12\n344\n-10\n"
-./test.sh $s set4/odd0.pl -i "-1\n"
+
+./tst $s set3/echo.2.pl
+./tst $s set3/echo.2.pl -a "I love this"
+./tst $s set3/echonl.0.pl
+./tst $s set3/echonl.0.pl -a "I really love this"
+./tst $s set3/five.pl
+./tst $s set3/prime0.pl
+./tst $s set3/tetrahedral.pl
+./tst $s set3/cookie0.pl -i "I'm\nenjoying\nthis\n\ncookie"
+
+./tst $s set4/echonl.1.pl -i "1 2 3 4 4"
+./tst $s set4/size.pl -i "1"
+./tst $s set4/size.pl -i "10"
+./tst $s set4/size.pl -i "-1"
+./tst $s set4/size.pl -i "0"
+./tst $s set4/odd0.pl -i "23\n0\n12\n-1\n"
+./tst $s set4/odd0.pl -i "23\n0\n12\n344\n-10\n"
+./tst $s set4/odd0.pl -i "-1\n"
+./tst $s set4/size.pl.1 -i "0"
+./tst $s set4/size.pl.1 -i "9"
+./tst $s set4/size.pl.1 -i "333"
+./tst $s set4/size.pl.1 -i "-23"
