@@ -178,9 +178,16 @@ sub handleOperators {
   } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
     # .. operator with variables
     return "range(" . translateVar($1) . ", " . translateVar($2) . ")"
-  } elsif ($expr =~ /([\$\w]+)\s*(==|<)\s*([\$\w]+)/) {
+  } elsif ($expr =~ /^(.*?)\s*(==|<|>=)\s*([\$\w]+)/) {
     # comparison operators on variables
-    $expr =  "int(". translateVar($1) .") ". translateVar($2) ." int(". translateVar($3) .")";
+    $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
+    while ($expr =~ /([\$@]\w+)/g ) {
+      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    }
+    return "$expr";
+  } elsif ($expr =~ /^([\$\w]+)\s*(%)\s*([\$\w]+)/) {
+    # comparison operators on variables
+    $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }

@@ -37,3 +37,6 @@ fi
 ./test.sh $s set4/size.pl -i "10"
 ./test.sh $s set4/size.pl -i "-1"
 ./test.sh $s set4/size.pl -i "0"
+./test.sh $s set4/odd0.pl -i "23\n0\n12\n-1\n"
+./test.sh $s set4/odd0.pl -i "23\n0\n12\n344\n-10\n"
+./test.sh $s set4/odd0.pl -i "-1\n"
