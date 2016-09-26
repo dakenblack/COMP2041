@@ -170,14 +170,24 @@ sub translateExpression {
 
 sub handleOperators {
   my ($expr) = @_;
-  while ($expr =~ /([\$@]\w+)/g ) {
-    $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
-  }
+  #print "<$expr> \n";
   if ($expr =~ /(\d+)\s*\.\.\s*(\d+)/) {
+    # .. operator with number constants
     my $lim = $2 + 1;
     return "range($1,$lim)";
   } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
+    # .. operator with variables
     return "range(" . translateVar($1) . ", " . translateVar($2) . ")"
+  } elsif ($expr =~ /([\$\w]+)\s*(==|<)\s*([\$\w]+)/) {
+    # comparison operators on variables
+    $expr =  "int(". translateVar($1) .") ". translateVar($2) ." int(". translateVar($3) .")";
+    while ($expr =~ /([\$@]\w+)/g ) {
+      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    }
+    return "$expr";
+  }
+  while ($expr =~ /([\$@]\w+)/g ) {
+    $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
   }
   $expr =~ s/\seq\s/ == /;
   return $expr;
