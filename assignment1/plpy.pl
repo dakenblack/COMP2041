@@ -14,6 +14,7 @@ if(scalar @ARGV != 0 and ($ARGV[0] eq "-d" or $ARGV[0] eq "--debug")) {
 
 my $globalIndent = 0;
 my $incIndentFlag = 0;
+my $secondary = "";
 
 main();
 
@@ -46,6 +47,8 @@ sub main {
       $op =  "else:";
     } elsif (/^\S+\s*=/) {
       $op =  translateAssignment($_);
+    } elsif (/^\s*(\$\w+)\s*(\+\+)/) {
+      $op =  handleOperators($_);
     } elsif (/^(for|foreach)\s+(.*)/) {
       $incIndentFlag = 1;
       $op =  translateFor();
@@ -58,11 +61,14 @@ sub main {
     } else {
       $op = $_;
     }
-    if(not $debug) {
+
+    $op = "$op\n$secondary";
+    $secondary = "";
+    for my $l (split(/\n/,$op)) {
       for (1 .. $globalIndent ) {
         print "\t";
       }
-      print "$op\n";
+      print "$l\n";
       if ($incIndentFlag) {
         $globalIndent ++;
         $incIndentFlag = 0;
@@ -185,6 +191,14 @@ sub handleOperators {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
     return "$expr";
+  } elsif ($expr =~ /^\s*(\$\w+)\s*(\+\+|--)/) {
+    # unary decrement and increment operators
+    if($2 eq "++") {
+      return translateVar($1) . " += 1";
+    } else {
+      return translateVar($1) . " -= 1";
+    }
+
   } elsif ($expr =~ /^([\$\w]+)\s*(%)\s*([\$\w]+)/) {
     # comparison operators on variables
     $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
@@ -192,9 +206,10 @@ sub handleOperators {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
     return "$expr";
-  } elsif ($expr =~ /^(.*?)\s*(=)\s*(.*)/) {
+  } elsif ($expr =~ /^\$?(.*?)\s*(=)\s*(input\(\))/) {
     # comparison operators on constants and variables
-    $expr =  "lambda $1 : $3";
+    $expr =  "True";
+    $secondary = "$1 = sys.stdin.readline()\nif not $1:\n\tbreak";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
