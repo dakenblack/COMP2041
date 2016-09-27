@@ -46,3 +46,4 @@ fi
 ./tst $s set4/size.pl.1 -i "-23"
 ./tst $s set4/line_count.1.pl -i "-23"
 ./tst $s set4/line_count.1.pl -i "-23\n12\n55"
+./tst $s set4/devowel.pl -i "abcdefghijklmnopqrstuvwxyz" --no-extra-arg
