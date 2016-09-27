@@ -45,6 +45,8 @@ sub main {
       # any if statement
       $incIndentFlag = 1;
       $op =  "else:";
+    } elsif (/^\s*(\$\w+)\s*(=~)/) {
+      $op =  handleOperators($_);
     } elsif (/^\S+\s*=/) {
       $op =  translateAssignment($_);
     } elsif (/^\s*(\$\w+)\s*(\+\+)/) {
@@ -78,7 +80,7 @@ sub main {
 }
 
 sub translateHashbang {
-  return "#!/usr/bin/python3 -u\nimport sys";
+  return "#!/usr/bin/python3 -u\nimport sys, re";
 }
 
 sub translateIfWhile {
@@ -140,9 +142,9 @@ sub translateVar {
 sub translateExpression {
   my ($expr,$isString) = @_;
   $expr =~ s/\s*;\s*$//;
-  if ($expr =~ /<STDIN>/) {
-    $expr =~ s/<STDIN>/input()/;
-  }
+  $expr =~ s/<STDIN>/input()/;
+  $expr =~ s/<>/input()/;
+
   if($expr =~ /^[\$@]\w+$/) {
     return translateVar($expr);
   } elsif($expr =~ /^\s*(["'].*["'])\s*$/) {
@@ -198,6 +200,9 @@ sub handleOperators {
     } else {
       return translateVar($1) . " -= 1";
     }
+  } elsif ($expr =~ /^\s*(\$\w+)\s*=~\s*s\/(.*?)\/(.*?)\/(g?)/) {
+    #replace with re
+    return translateVar($1) . " = re.subn(r'$2',r'$3',". translateVar($1) .")[0]"
 
   } elsif ($expr =~ /^([\$\w]+)\s*(%)\s*([\$\w]+)/) {
     # comparison operators on variables
