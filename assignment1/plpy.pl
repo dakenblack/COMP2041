@@ -136,7 +136,6 @@ sub translateExpression {
   $expr =~ s/\s*;\s*$//;
   if ($expr =~ /<STDIN>/) {
     $expr =~ s/<STDIN>/input()/;
-    return $expr;
   }
   if($expr =~ /^[\$@]\w+$/) {
     return translateVar($expr);
@@ -230,4 +229,9 @@ sub getFunction {
   } else {
     return genericFunc($func,$arg);
   }
+}
+
+sub genericFunc {
+  my ($func,$arg) = @_;
+  return "$func($arg)";
 }
