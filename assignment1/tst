@@ -49,8 +49,11 @@ NC='\033[0m' # No Color
 
 if [ -z "$dif" ] ; then
   echo -e "${GREEN}<==============PASSED=============>${NC}"
-elif [ "$suppress" -eq "0" ] ; then
+else
   echo -e "${RED}<==============FAILED=============>${NC}"
+fi
+
+if [ "$suppress" -eq "0" ] ; then
   divider="<=================================>"
   echo "$divider"
   echo "Converted Code:"
@@ -64,6 +67,4 @@ elif [ "$suppress" -eq "0" ] ; then
   echo "$divider"
   echo "Diff:"
   echo "$dif"
-else
-  echo -e "${RED}<==============FAILED=============>${NC}"
 fi
