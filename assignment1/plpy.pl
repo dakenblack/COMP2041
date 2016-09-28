@@ -14,8 +14,11 @@ if(scalar @ARGV != 0 and ($ARGV[0] eq "-d" or $ARGV[0] eq "--debug")) {
 
 my $globalIndent = 0;
 my $incIndentFlag = 0;
+my $endBlockReached = 0;
+
 my $after = "";
 my $before = "";
+my $endBlock = "";
 
 main();
 
@@ -24,8 +27,14 @@ sub main {
     my $op;
     while(/}/) {
       $globalIndent --;
+      $endBlockReached = 1;
+      if($debug) {
+        print "<END OF BLOCK>\n";
+        print "\tEND <$endBlock>\n";
+      }
       s/}//;
     }
+
     chomp;
     s/^\s+//;
     s/[\s\n]+$//;
@@ -67,10 +76,14 @@ sub main {
     } else {
       $op = $_;
     }
-
     $op = "$op\n$after";
     if(not ("$before" eq "")) {
       $op = "$before\n$op";
+    }
+    chomp $op;
+    if($endBlockReached) {
+      $endBlockReached = 0;
+      $op = "$op\n\t$endBlock";
     }
     $before = "";
     $after = "";
@@ -106,7 +119,9 @@ sub translateIfWhile {
 sub translateFor {
   my ($line) = @_;
   /^for\s+\((.*?);(.*?);(.*?)\)/;
-  $after = "while ". translateExpression($2) .":\n" . translateExpression($3);
+  $after = "while ". translateExpression($2) . ":";
+  $endBlock = translateExpression($3);
+
   return translateAssignment($1);
 }
 

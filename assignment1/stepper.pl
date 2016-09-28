@@ -11,7 +11,7 @@ while(<F>) {
   print "In : $_ \n";
   s/"/\\"/g;
   s/\$/\\\$/g;
-  $op = `echo "$_" | perl plpy.pl`;
+  $op = `echo "$_" | perl plpy.pl -d`;
   $flag = 1;
   for $line (split (/\n/, $op)) {
     if ($flag) {

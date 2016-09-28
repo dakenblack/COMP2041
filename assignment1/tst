@@ -8,6 +8,7 @@ input_flag=0
 extraArg="-c"
 argv=""
 inputv=""
+debug=""
 for i in "$@" ; do
   if [ "$arg_flag" -eq "1" ] ; then
     argv="$i"
@@ -23,11 +24,13 @@ for i in "$@" ; do
     input_flag=1
   elif [ $i = "--no-extra-arg" ] ; then
     extraArg=""
+  elif [ $i = "-d" ] ; then
+    debug="-d"
   else
     file=$i
   fi
 done
-code=`perl plpy.pl $file`
+code=`perl plpy.pl $debug $file`
 
 echo -ne "testing  : $file "
 if [ -n "$argv" ] ; then
