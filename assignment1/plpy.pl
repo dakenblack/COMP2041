@@ -21,11 +21,11 @@ main();
 sub main {
   while(<>){
     my $op;
-    chomp;
     while(/}/) {
       $globalIndent --;
       s/}//;
     }
+    chomp;
     s/^\s+//;
     s/[\s\n]+$//;
 
@@ -51,9 +51,12 @@ sub main {
       $op =  translateAssignment($_);
     } elsif (/^\s*(\$\w+)\s*(\+\+)/) {
       $op =  handleOperators($_);
+    } elsif (/^for\s+\(.*?;.*?;.*?\)/) {
+      $incIndentFlag = 2;
+      $op =  translateFor($_);
     } elsif (/^(for|foreach)\s+(.*)/) {
       $incIndentFlag = 1;
-      $op =  translateFor();
+      $op =  translateForeach();
     } elsif (/^\w+;?$/) {
       $op =  translateStatement($_);
     } elsif (/^\w+\s+\$?\w+/) {
@@ -71,9 +74,11 @@ sub main {
         print "\t";
       }
       print "$l\n";
-      if ($incIndentFlag) {
+      if ($incIndentFlag == 1) {
         $globalIndent ++;
         $incIndentFlag = 0;
+      } elsif ($incIndentFlag != 0) {
+        $incIndentFlag--;
       }
     }
   }
@@ -94,6 +99,13 @@ sub translateIfWhile {
 }
 
 sub translateFor {
+  my ($line) = @_;
+  /^for\s+\((.*?);(.*?);(.*?)\)/;
+  $secondary = "while ". translateExpression($2) .":\n" . translateExpression($3);
+  return translateAssignment($1);
+}
+
+sub translateForeach {
   my ($line) = @_;
   /^(for|foreach)\s+(\$\w+)\s+\((.*)\)/;
   return "for " . translateVar($2) . " in " . translateExpression($3,0) . ":";
@@ -144,8 +156,11 @@ sub translateExpression {
   $expr =~ s/\s*;\s*$//;
   $expr =~ s/<STDIN>/input()/;
   $expr =~ s/<>/input()/;
-
-  if($expr =~ /^[\$@]\w+$/) {
+  chomp $expr;
+  $expr =~ s/^\s+//;
+  $expr =~ s/[\s\n]+$//;
+  #print "EXPR: <$expr>\n";
+  if($expr =~ /^[\$@#]{1,2}\w+$/) {
     return translateVar($expr);
   } elsif($expr =~ /^\s*(["'].*["'])\s*$/) {
     # string constant
