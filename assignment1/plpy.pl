@@ -14,7 +14,8 @@ if(scalar @ARGV != 0 and ($ARGV[0] eq "-d" or $ARGV[0] eq "--debug")) {
 
 my $globalIndent = 0;
 my $incIndentFlag = 0;
-my $secondary = "";
+my $after = "";
+my $before = "";
 
 main();
 
@@ -67,8 +68,12 @@ sub main {
       $op = $_;
     }
 
-    $op = "$op\n$secondary";
-    $secondary = "";
+    $op = "$op\n$after";
+    if(not ("$before" eq "")) {
+      $op = "$before\n$op";
+    }
+    $before = "";
+    $after = "";
     for my $l (split(/\n/,$op)) {
       for (1 .. $globalIndent ) {
         print "\t";
@@ -101,7 +106,7 @@ sub translateIfWhile {
 sub translateFor {
   my ($line) = @_;
   /^for\s+\((.*?);(.*?);(.*?)\)/;
-  $secondary = "while ". translateExpression($2) .":\n" . translateExpression($3);
+  $after = "while ". translateExpression($2) .":\n" . translateExpression($3);
   return translateAssignment($1);
 }
 
@@ -142,13 +147,35 @@ sub translateVar {
   if ($var =~ /^\$#(\w+)/) {
     $var = "len(" . translateVar("\$$1") . ")"
   } elsif($var =~/(\$\w+)\[(.*?)]/) {
-    return translateVar($1) . "[". translateVar($2) . "]";
+    if(isExpression($2)){
+      $before = translateExpression($2);
+      return translateVar($1) . "[". getFirstVariable($2) . "]";
+    } else {
+      return translateVar($1) . "[". translateVar($2) . "]";
+    }
+    #indexing
   } elsif($var =~ /[\$@]ARGV/) {
     $var =~ s/[\$@]ARGV/sys.argv/g;
   } else {
     $var =~ s/[\$@]// ;
   }
   return $var;
+}
+
+sub isExpression {
+  my ($expr) = @_;
+  if(/(\+=|-=|\+|-)/) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+sub getFirstVariable {
+  my ($expr) = @_;
+  #print "GET FIRST <$expr>\n";
+  $expr =~ /^\s*(\$\w+)/;
+  return translateVar($1);
 }
 
 sub translateExpression {
@@ -229,7 +256,7 @@ sub handleOperators {
   } elsif ($expr =~ /^\$?(.*?)\s*(=)\s*(input\(\))/) {
     # comparison operators on constants and variables
     $expr =  "True";
-    $secondary = "$1 = sys.stdin.readline()\nif not $1:\n\tbreak";
+    $after = "$1 = sys.stdin.readline()\nif not $1:\n\tbreak";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
