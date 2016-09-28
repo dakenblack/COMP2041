@@ -30,7 +30,6 @@ sub main {
       $endBlockReached = 1;
       if($debug) {
         print "<END OF BLOCK>\n";
-        print "\tEND <$endBlock>\n";
       }
       s/}//;
     }
