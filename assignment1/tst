@@ -34,11 +34,11 @@ code=`perl plpy.pl $debug $file`
 
 echo -ne "testing  : $file "
 if [ -n "$argv" ] ; then
-  echo -ne ", with arg : $argv "
+  echo -ne ", with arg : <$argv> "
 fi
 
 if [ -n "$inputv" ] ; then
-  echo -n ", with input : $inputv "
+  echo -n ", with input : \"$inputv\" "
   orig=`echo -e "$inputv" | perl $file $extraArg $argv`
   new=`echo -e "$inputv" | python -c "$code" $argv 2>&1`
 
