@@ -45,8 +45,7 @@ sub main {
     } elsif (/^print\s+(.*)/) {
       # any print statement
       $op =  translatePrint();
-    } elsif (/^(if|while|elsif)\s+\((.*)\)/) {
-
+    } elsif (/^(if|while|elsif)\s*\((.*)\)/) {
       $incIndentFlag = 1;
       # any if statement
       $op =  translateIfWhile($_);
@@ -58,8 +57,12 @@ sub main {
       $op =  handleOperators($_);
     } elsif (/^\S+\s*=/) {
       $op =  translateAssignment($_);
-    } elsif (/^\s*(\$\w+)\s*(\+\+)/) {
+    } elsif (/^\s*(\$\w+)\s*(\+\+|--)/) {
+      # unary operators
       $op =  handleOperators($_);
+    } elsif (/^\s*(\$\w+)\s*(\+=|-=)\s*(.*?)/) {
+      # unary operators
+      $op =  translateExpression($_);
     } elsif (/^for\s+\(.*?;.*?;.*?\)/) {
       $incIndentFlag = 2;
       $op =  translateFor($_);
@@ -270,7 +273,7 @@ sub handleOperators {
   } elsif ($expr =~ /^\$?(.*?)\s*(=)\s*(input\(\))/) {
     # comparison operators on constants and variables
     $expr =  "True";
-    $after = "$1 = sys.stdin.readline()\nif not $1:\n\tbreak";
+    $after = "$1 = sys.stdin.readline().strip()\nif not $1:\n\tbreak";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
