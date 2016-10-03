@@ -16,3 +16,7 @@ if($num < 24 && $num > 14) {
 if ($num <=> 13) {
   print "derp\n";
 }
+
+if ($num == 22) {
+  exit;
+}

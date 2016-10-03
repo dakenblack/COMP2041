@@ -306,6 +306,8 @@ sub translateStatement {
     return "break";
   } elsif($st =~ /next/ ) {
     return "continue";
+  } elsif($st =~ /exit/ ) {
+    return "quit()";
   } else {
     return $st;
   }
