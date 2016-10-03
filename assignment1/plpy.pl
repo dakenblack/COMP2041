@@ -245,10 +245,10 @@ sub handleOperators {
   } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
     # .. operator with variables
     return "range(" . translateVar($1) . ", " . translateVar($2) . ")";
-  } elsif ($expr =~ /(.*?)\s*(and|&&)\s*(.*)/) {
+  } elsif ($expr =~ /(.*?)\s*(\sand\s|&&)\s*(.*)/) {
     # logical operators
     return translateExpression($1) . " and " . translateExpression($3);
-  } elsif ($expr =~ /(.*?)\s*(or|\|\|)\s*(.*)/) {
+  } elsif ($expr =~ /(.*?)\s*(\sor\s|\|\|)\s*(.*)/) {
     # logical operators
     return translateExpression($1) . " or " . translateExpression($3);
   } elsif ($expr =~ /^(.*?)\s*(==|<|>|>=|<=)\s*([\$\w]+)/) {
