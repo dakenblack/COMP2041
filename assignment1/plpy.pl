@@ -76,7 +76,7 @@ sub main {
     } elsif (/^}/) {
       $op =  "";
     } else {
-      $op = $_;
+      $op = "#$_";
     }
     $op = "$op\n$after";
     if(not ("$before" eq "")) {
