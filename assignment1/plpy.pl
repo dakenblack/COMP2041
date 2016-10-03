@@ -102,6 +102,7 @@ sub main {
       }
     }
   }
+  print "\n";
 }
 
 sub translateHashbang {
