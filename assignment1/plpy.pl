@@ -251,6 +251,13 @@ sub handleOperators {
   } elsif ($expr =~ /(.*?)\s*(\sor\s|\|\|)\s*(.*)/) {
     # logical operators
     return translateExpression($1) . " or " . translateExpression($3);
+  } elsif ($expr =~ /^(.*?)\s*(<=>)\s*([\$\w]+)/) {
+    # comparison operators on constants and variables
+    $expr =  "int(int(". translateExpression($1) .") > int(". translateVar($3) .")) - int(int(". translateExpression($1) .") < int(". translateVar($3) ."))" ;
+    while ($expr =~ /([\$@]\w+)/g ) {
+      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    }
+    return "$expr";
   } elsif ($expr =~ /^(.*?)\s*(==|<|>|>=|<=)\s*([\$\w]+)/) {
     # comparison operators on constants and variables
     $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";

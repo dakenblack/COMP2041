@@ -12,3 +12,7 @@ if($num < 24 && $num > 14) {
 } elsif ($num >= 24 or $num < 0) {
   print "check 4\n";
 }
+
+if ($num <=> 13) {
+  print "derp\n";
+}
