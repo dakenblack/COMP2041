@@ -43,7 +43,7 @@ s="-s"
 ./tst $s set4/size.pl.1 -i "-23"
 ./tst $s set4/line_count.1.pl -i "-23"
 ./tst $s set4/line_count.1.pl -i "-23\n12\n55"
-./tst $s set4/devowel.pl -i "abcdefghijklmnopqrstuvwxyz" --no-extra-arg
+./tst $s set4/devowel.pl -i "abcdefghijklmnopqrstuvwxyz"
 
 ./tst $s set5/reverse_lines.0.pl -i "1\n2\n3\n"
 ./tst $s set5/reverse_lines.1.pl -i "1\n2\n3\n"
