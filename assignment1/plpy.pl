@@ -168,7 +168,7 @@ sub translateVar {
       $before = translateExpression($2);
       return translateVar($1) . "[". getFirstVariable($2) . "]";
     } else {
-      return translateVar($1) . "[". translateVar($2) . "]";
+      return translateVar($1) . "[int(". translateVar($2) . ")+1]";
     }
     #indexing
   } elsif($var =~ /[\$@]ARGV/) {
@@ -205,6 +205,8 @@ sub translateExpression {
   $expr =~ s/[\s\n]+$//;
   #print "EXPR: <$expr>\n";
   if($expr =~ /^[\$@#]{1,2}\w+$/) {
+    return translateVar($expr);
+  } elsif($expr =~ /^\$\w+\[.*?\]$/) {
     return translateVar($expr);
   } elsif($expr =~ /^\s*(["'].*["'])\s*$/) {
     # string constant
@@ -263,7 +265,7 @@ sub handleOperators {
     #replace with re
     return translateVar($1) . " = re.subn(r'$2',r'$3',". translateVar($1) .")[0]"
 
-  } elsif ($expr =~ /^([\$\w]+)\s*(%)\s*([\$\w]+)/) {
+  } elsif ($expr =~ /^([\$\w]+)\s*(%|\*\*|\/|\*)\s*([\$\w]+)/) {
     # comparison operators on variables
     $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
     while ($expr =~ /([\$@]\w+)/g ) {
