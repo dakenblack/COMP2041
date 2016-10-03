@@ -1,9 +1,6 @@
 #!/bin/sh
 
-s=""
-if [ $1 = "-s" ] ; then
-  s="-s"
-fi
+s="-s"
 
 ./tst $s set0/hello_world.pl
 ./tst $s set0/my_test.pl
