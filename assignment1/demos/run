@@ -1,2 +1,3 @@
 #!/bin/sh
 ./tst -s demos/demo0.pl -i "1\n2\n3"
+./tst -s demos/demo1.pl -a "hello 10"

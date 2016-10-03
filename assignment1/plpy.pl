@@ -265,7 +265,7 @@ sub handleOperators {
 
   } elsif ($expr =~ /^([\$\w]+)\s*(%|\*\*|\/|\*)\s*([\$\w]+)/) {
     # comparison operators on variables
-    $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
+    $expr =  "int(int(". translateExpression($1) .") $2 int(". translateVar($3) ."))";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
