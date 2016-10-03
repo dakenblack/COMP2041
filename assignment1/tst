@@ -39,11 +39,11 @@ fi
 
 if [ -n "$inputv" ] ; then
   echo -n ", with input : \"$inputv\" "
-  orig=`echo -e "$inputv" | perl $file $argv`
+  orig=`echo -e "$inputv" | perl $file $argv 2>&1`
   new=`echo -e "$inputv" | python test.py $argv 2>&1`
 
 else
-  orig=`perl $file $argv`
+  orig=`perl $file $argv 2>&1`
   new=`python test.py $argv 2>&1`
 fi
 

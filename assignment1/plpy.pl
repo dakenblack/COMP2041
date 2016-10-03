@@ -237,7 +237,7 @@ sub translateExpression {
 
 sub handleOperators {
   my ($expr) = @_;
-  #print "<$expr> \n";
+  #print "OP <$expr> \n";
   if ($expr =~ /(\d+)\s*\.\.\s*(\d+)/) {
     # .. operator with number constants
     my $lim = $2 + 1;
@@ -245,7 +245,13 @@ sub handleOperators {
   } elsif ($expr =~ /(.*?)\s*\.\.\s*(.*)/) {
     # .. operator with variables
     return "range(" . translateVar($1) . ", " . translateVar($2) . ")";
-  } elsif ($expr =~ /^(.*?)\s*(==|<|>=|<=)\s*([\$\w]+)/) {
+  } elsif ($expr =~ /(.*?)\s*(and|&&)\s*(.*)/) {
+    # logical operators
+    return translateExpression($1) . " and " . translateExpression($3);
+  } elsif ($expr =~ /(.*?)\s*(or|\|\|)\s*(.*)/) {
+    # logical operators
+    return translateExpression($1) . " or " . translateExpression($3);
+  } elsif ($expr =~ /^(.*?)\s*(==|<|>|>=|<=)\s*([\$\w]+)/) {
     # comparison operators on constants and variables
     $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
     while ($expr =~ /([\$@]\w+)/g ) {
