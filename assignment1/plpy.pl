@@ -105,7 +105,7 @@ sub main {
 }
 
 sub translateHashbang {
-  return "#!/usr/bin/python3 -u\nimport sys, re";
+  return "#!/usr/bin/python3 -u\nimport sys, re\nsys.argv.pop(0)";
 }
 
 sub translateIfWhile {
@@ -263,7 +263,7 @@ sub handleOperators {
     #replace with re
     return translateVar($1) . " = re.subn(r'$2',r'$3',". translateVar($1) .")[0]"
 
-  } elsif ($expr =~ /^([\$\w]+)\s*(%)\s*([\$\w]+)/) {
+  } elsif ($expr =~ /^([\$\w]+)\s*(%|\*\*|\/|\*)\s*([\$\w]+)/) {
     # comparison operators on variables
     $expr =  "int(". translateExpression($1) .") $2 int(". translateVar($3) .")";
     while ($expr =~ /([\$@]\w+)/g ) {

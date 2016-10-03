@@ -30,7 +30,7 @@ for i in "$@" ; do
     file=$i
   fi
 done
-code=`perl plpy.pl $debug $file`
+perl plpy.pl $debug $file > test.py
 
 echo -ne "testing  : $file "
 if [ -n "$argv" ] ; then
@@ -39,12 +39,12 @@ fi
 
 if [ -n "$inputv" ] ; then
   echo -n ", with input : \"$inputv\" "
-  orig=`echo -e "$inputv" | perl $file $extraArg $argv`
-  new=`echo -e "$inputv" | python -c "$code" $argv 2>&1`
+  orig=`echo -e "$inputv" | perl $file $argv`
+  new=`echo -e "$inputv" | python test.py $argv 2>&1`
 
 else
-  orig=`perl $file -c $argv`
-  new=`python -c "$code" $argv 2>&1`
+  orig=`perl $file $argv`
+  new=`python test.py $argv 2>&1`
 fi
 
 dif=`diff <(echo "$orig") <(echo "$new")`
@@ -63,7 +63,7 @@ if [ "$suppress" -eq "0" ] ; then
   divider="<=================================>"
   echo "$divider"
   echo "Converted Code:"
-  echo "$code"
+  cat test.py
   echo "$divider"
   echo "Original Output: "
   echo "$orig"
