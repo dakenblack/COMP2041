@@ -1,0 +1,6 @@
+#!/bin/sh
+./tst -s tests/test00.pl
+./tst -s tests/test01.pl
+./tst -s tests/test02.pl
+./tst -s tests/test03.pl -i "1\n2\n3\n4"
+./tst -s tests/test04.pl -i "abcdefg\nhijklmnop\nqrstuvwxyz"
