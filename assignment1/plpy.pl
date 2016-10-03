@@ -272,13 +272,23 @@ sub handleOperators {
     } else {
       return translateVar($1) . " -= 1";
     }
+  } elsif ($expr =~ /^\s*(\$\w+)\s*=~\s*\/(.*?)\//) {
+    #math with re
+    return "(re.search(r'$2',". translateVar($1) .") != None)";
+
   } elsif ($expr =~ /^\s*(\$\w+)\s*=~\s*s\/(.*?)\/(.*?)\/(g?)/) {
     #replace with re
-    return translateVar($1) . " = re.subn(r'$2',r'$3',". translateVar($1) .")[0]"
-
+    return translateVar($1) . " = re.subn(r'$2',r'$3',". translateVar($1) .")[0]";
   } elsif ($expr =~ /^([\$\w]+)\s*(%|\*\*|\/|\*)\s*([\$\w]+)/) {
     # comparison operators on variables
     $expr =  "int(int(". translateExpression($1) .") $2 int(". translateVar($3) ."))";
+    while ($expr =~ /([\$@]\w+)/g ) {
+      $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
+    }
+    return "$expr";
+  } elsif ($expr =~ /^([\$\w\ "]+)\s*(\.)\s*([\$\w\ "]+)/) {
+    # comparison operators on variables
+    $expr =  "str(". translateExpression($1) .") + str(". translateVar($3) .")";
     while ($expr =~ /([\$@]\w+)/g ) {
       $expr = join( translateVar($1) , split(/\Q$1/, $expr, 2) );
     }
