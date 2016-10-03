@@ -67,3 +67,11 @@
 * Mon, 03 Oct (04:53 pm) added <=> operator
 * Mon, 03 Oct (04:55 pm) added exit function
 * Mon, 03 Oct (04:58 pm) made the un translated a comment
+* Mon, 03 Oct (06:10 pm) a script to generate the diary and the diary itself
+* Mon, 03 Oct (06:24 pm) finished demo 3.pl
+* Mon, 03 Oct (08:29 pm) added last demo file, and also fixed the string concatenation operator
+* Mon, 03 Oct (08:30 pm) updated demo/run
+* Mon, 03 Oct (08:30 pm) updated demo/run
+* Mon, 03 Oct (08:39 pm) added a proper tests firectory with run script
+* Mon, 03 Oct (08:42 pm) changed the name of the demos
+* Mon, 03 Oct (08:43 pm) updated give script
