@@ -8,3 +8,5 @@
 ./tst -s demos/demo2.pl -a "33"
 ./tst -s demos/demo3.pl -i "12\n13\n-1\n123\n345"
 ./tst -s demos/demo3.pl -i "12\n13\n-1\n-123\n222"
+./tst -s demos/demo4.pl -i "1234567890\nTest"
+./tst -s demos/demo4.pl -i "1234567890\nasast"
