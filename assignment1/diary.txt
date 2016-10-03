@@ -1,57 +1,69 @@
-* [31m1e0115c[m -[33m[m finished subset 0 and added a test script [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31mce47872[m -[33m[m added a main function [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m2373e40[m -[33m[m cleanliness for the tester [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m7835d7e[m -[33m[m simple download script and some tests for set1 [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m00ca670[m -[33m[m prettified the tester [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m8f8d1e9[m -[33m[m added a stepper script [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m7d1f1f5[m -[33m[m added some TODOs and some basic assignment [32m(12 days ago) [1;34m<Jabez Wilson>[m
-* [31m0973aeb[m -[33m[m some more scripts [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m62c1628[m -[33m[m added a debug flag and also a better translater for variables in strings [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m416faf7[m -[33m[m fix for variables in expresson [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mbeb832f[m -[33m[m cleaned up translate expr [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m7bb3e6f[m -[33m[m fixed set 1 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31ma3b7fbc[m -[33m[m set up for subset 2 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mec4a9cb[m -[33m[m niceer test [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m9a8cc7d[m -[33m[m cooler test scripts [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m5688f58[m -[33m[m finished clause for if [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m7d1ee67[m -[33m[m finsihed all of set2 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m6e5c00e[m -[33m[m cleared up tester [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mb85be2c[m -[33m[m merged the if and while and added a for example [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mf5925f5[m -[33m[m added translation for for and foreach [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m921e849[m -[33m[m added comment for stepper [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mc8ada5b[m -[33m[m added set 3 and changed dwn [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31me195e2f[m -[33m[m added set4 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m9392d2f[m -[33m[m added whitespace in the string checker [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m5d7e798[m -[33m[m added whitespace in the string checker [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m6fcbdb7[m -[33m[m one version of the plpy [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31ma3ec0e8[m -[33m[m fixed arg tester and stuff [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m46b7e20[m -[33m[m added some tests with arguments [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m0f8ab70[m -[33m[m fixed another file [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m21d9fd0[m -[33m[m added a different subroutine for operators [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m889108a[m -[33m[m removed an excessive line in the test [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mda4a174[m -[33m[m corrected an error, the subroutine should not be called if it is a string: [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m0687ad7[m -[33m[m fixed the stdin problems with the test and other stuff, this is sooooo awesome [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m7d6fef8[m -[33m[m added $s to the thing [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m93945ef[m -[33m[m finished all the problems from set 3 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31me82807a[m -[33m[m it really works [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31mc8905d5[m -[33m[m fixed the operator 0 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31meb2f5cc[m -[33m[m Huzzar the first file from set4 [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m739ea77[m -[33m[m moved the decrement of indent to a while outside the main clasues: [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m72b8029[m -[33m[m some sort of wierd type issue [32m(11 days ago) [1;34m<Jabez Wilson>[m
-* [31m0c65d9f[m -[33m[m fixed the wierd issue from before, and also got the compiler working with the size.pl files [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31mf98529b[m -[33m[m added functionality to handle an expression in an expression, also started to determine order of execution of operators [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m3358e16[m -[33m[m changed the name of the test file for easy execution [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m3fbca13[m -[33m[m changed the name of the test runner in the tester file, ad=nd added tests for size.pl.1 perl file [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31mf0aac3e[m -[33m[m moved the incIndent flag to the main loop [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31ma422eec[m -[33m[m tst is more verbose, unless specified and a comment in the plpy [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m81a7dfd[m -[33m[m removed old output file [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m1fa9aaa[m -[33m[m added generic Func, and removed the return statement after converting STDIN [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m06cc7e2[m -[33m[m handled = in an expression, and added more tests [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31m7da25a0[m -[33m[m fixed the line count thing, also added functionality to do multiple lines [32m(6 days ago) [1;34m<Jabez Wilson>[m
-* [31mb2e3e76[m -[33m[m added awesome re stuff for spectacular regex compiling [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31md108843[m -[33m[m added an extra flag to tst to not use an extra arg for perl files, this is useful, when dealing with files that use <> [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31mf40bca0[m -[33m[m added new files [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31mf50d735[m -[33m[m handles for loops [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31mebc5e74[m -[33m[m changed name of secondary to after and added before with the same style [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31m3f370bd[m -[33m[m fixed up the loop ending thing, but need to design a way to define global definitions" [32m(5 days ago) [1;34m<Jabez Wilson>[m
-* [31m4b1dba4[m -[33m (HEAD -> master, origin/master, origin/HEAD)[m removed excessive debug statement [32m(5 days ago) [1;34m<Jabez Wilson>[m
+* Wed, 21 Sep (03:28 pm) finished subset 0 and added a test script
+* Wed, 21 Sep (03:31 pm) added a main function
+* Wed, 21 Sep (03:36 pm) cleanliness for the tester
+* Wed, 21 Sep (05:08 pm) simple download script and some tests for set1
+* Wed, 21 Sep (05:18 pm) prettified the tester
+* Wed, 21 Sep (05:58 pm) added a stepper script
+* Wed, 21 Sep (06:49 pm) added some TODOs and some basic assignment
+* Thu, 22 Sep (09:15 am) some more scripts
+* Thu, 22 Sep (09:38 am) added a debug flag and also a better translater for variables in strings
+* Thu, 22 Sep (09:42 am) fix for variables in expresson
+* Thu, 22 Sep (09:57 am) cleaned up translate expr
+* Thu, 22 Sep (10:19 am) fixed set 1
+* Thu, 22 Sep (10:23 am) set up for subset 2
+* Thu, 22 Sep (10:24 am) niceer test
+* Thu, 22 Sep (10:56 am) cooler test scripts
+* Thu, 22 Sep (11:01 am) finished clause for if
+* Thu, 22 Sep (11:03 am) finsihed all of set2
+* Thu, 22 Sep (11:06 am) cleared up tester
+* Thu, 22 Sep (11:15 am) merged the if and while and added a for example
+* Thu, 22 Sep (11:33 am) added translation for for and foreach
+* Thu, 22 Sep (11:35 am) added comment for stepper
+* Thu, 22 Sep (01:46 pm) added set 3 and changed dwn
+* Thu, 22 Sep (01:55 pm) added set4
+* Thu, 22 Sep (03:18 pm) added whitespace in the string checker
+* Thu, 22 Sep (03:18 pm) added whitespace in the string checker
+* Thu, 22 Sep (03:45 pm) one version of the plpy
+* Thu, 22 Sep (03:55 pm) fixed arg tester and stuff
+* Thu, 22 Sep (04:05 pm) added some tests with arguments
+* Thu, 22 Sep (04:19 pm) fixed another file
+* Thu, 22 Sep (04:22 pm) added a different subroutine for operators
+* Thu, 22 Sep (04:23 pm) removed an excessive line in the test
+* Thu, 22 Sep (04:26 pm) corrected an error, the subroutine should not be called if it is a string:
+* Thu, 22 Sep (04:50 pm) fixed the stdin problems with the test and other stuff, this is sooooo awesome
+* Thu, 22 Sep (04:50 pm) added $s to the thing
+* Thu, 22 Sep (04:57 pm) finished all the problems from set 3
+* Thu, 22 Sep (04:58 pm) it really works
+* Thu, 22 Sep (07:11 pm) fixed the operator 0
+* Thu, 22 Sep (07:22 pm) Huzzar the first file from set4
+* Thu, 22 Sep (07:27 pm) moved the decrement of indent to a while outside the main clasues:
+* Thu, 22 Sep (07:34 pm) some sort of wierd type issue
+* Tue, 27 Sep (09:41 am) fixed the wierd issue from before, and also got the compiler working with the size.pl files
+* Tue, 27 Sep (09:54 am) added functionality to handle an expression in an expression, also started to determine order of execution of operators
+* Tue, 27 Sep (09:55 am) changed the name of the test file for easy execution
+* Tue, 27 Sep (09:56 am) changed the name of the test runner in the tester file, ad=nd added tests for size.pl.1 perl file
+* Tue, 27 Sep (10:03 am) moved the incIndent flag to the main loop
+* Tue, 27 Sep (10:12 am) tst is more verbose, unless specified and a comment in the plpy
+* Tue, 27 Sep (10:13 am) removed old output file
+* Tue, 27 Sep (10:44 am) added generic Func, and removed the return statement after converting STDIN
+* Tue, 27 Sep (10:54 am) handled = in an expression, and added more tests
+* Tue, 27 Sep (09:46 pm) fixed the line count thing, also added functionality to do multiple lines
+* Tue, 27 Sep (10:04 pm) added awesome re stuff for spectacular regex compiling
+* Tue, 27 Sep (10:04 pm) added an extra flag to tst to not use an extra arg for perl files, this is useful, when dealing with files that use <>
+* Wed, 28 Sep (08:50 pm) added new files
+* Wed, 28 Sep (09:05 pm) handles for loops
+* Wed, 28 Sep (09:31 pm) changed name of secondary to after and added before with the same style
+* Wed, 28 Sep (09:53 pm) fixed up the loop ending thing, but need to design a way to define global definitions"
+* Wed, 28 Sep (09:54 pm) removed excessive debug statement
+* Mon, 03 Oct (10:29 am) added diary, cleaned up tst, and added 3 failing files to tester
+* Mon, 03 Oct (10:55 am) new demo script and changes to plpy for that
+* Mon, 03 Oct (11:24 am) forced suppress
+* Mon, 03 Oct (11:34 am) fixed up second demo script
+* Mon, 03 Oct (03:43 pm) Revert "fixed up second demo script"
+* Mon, 03 Oct (04:06 pm) fixed the args not working properly when running code in tst
+* Mon, 03 Oct (04:09 pm) fixed demo 1
+* Mon, 03 Oct (04:36 pm) added and and or logical operators
+* Mon, 03 Oct (04:53 pm) fixed an issue with spaces about or
+* Mon, 03 Oct (04:53 pm) added <=> operator
+* Mon, 03 Oct (04:55 pm) added exit function
+* Mon, 03 Oct (04:58 pm) made the un translated a comment
